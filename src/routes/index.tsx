@@ -2,13 +2,12 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import matterLogo from "@/assets/matter-logo.png";
 import { SobreMatter } from "@/components/proposal/SobreMatter";
-import { ClienteIncorpe, ClienteShowAutoMall } from "@/components/proposal/Cliente";
+import { ClienteIncorpe } from "@/components/proposal/Cliente";
 import { PropostaIncorpe } from "@/components/proposal/PropostaIncorpe";
-import { PropostaShowAutoMall } from "@/components/proposal/PropostaShowAutoMall";
 import { Resumo } from "@/components/proposal/Resumo";
 import {
   SmartRoutePrototype, SmartCodePrototype, SmartSquadPrototype,
-  MatterAcademyPrototype, AlmabrandsPrototype, GrowthMachinePrototype,
+  MatterAcademyPrototype,
 } from "@/components/proposal/Prototypes";
 import { Menu, X, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -16,30 +15,26 @@ import { Button } from "@/components/ui/button";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Matter&Co. · Proposta INCORPE + Show Auto Mall" },
-      { name: "description", content: "Proposta estratégica Matter&Co. para INCORPE e Show Auto Mall BH — eficiência operacional, branding, growth e inteligência aplicada." },
+      { title: "Matter&Co. · Proposta INCORPE" },
+      { name: "description", content: "Proposta estratégica Matter&Co. para INCORPE — eficiência operacional, tecnologia, escala e inteligência empresarial." },
     ],
   }),
   component: Index,
 });
 
 type TabId =
-  | "sobre" | "cliente-incorpe" | "cliente-sam" | "incorpe" | "samall" | "resumo"
-  | "p-route" | "p-code" | "p-squad" | "p-academy" | "p-alma" | "p-growth";
+  | "sobre" | "cliente-incorpe" | "incorpe" | "resumo"
+  | "p-route" | "p-code" | "p-squad" | "p-academy";
 
 const tabs: { id: TabId; label: string; group: string }[] = [
-  { id: "sobre", label: "Sobre a Matter", group: "Institucional" },
-  { id: "cliente-incorpe", label: "INCORPE", group: "Clientes" },
-  { id: "cliente-sam", label: "Show Auto Mall", group: "Clientes" },
-  { id: "incorpe", label: "Proposta Incorpe", group: "Propostas" },
-  { id: "samall", label: "Proposta Show Auto Mall", group: "Propostas" },
-  { id: "resumo", label: "Resumo Estratégico", group: "Propostas" },
-  { id: "p-route", label: "Smart Route", group: "Protótipos" },
-  { id: "p-code", label: "Smart Code", group: "Protótipos" },
-  { id: "p-squad", label: "Smart Squad", group: "Protótipos" },
-  { id: "p-academy", label: "Matter Academy", group: "Protótipos" },
-  { id: "p-alma", label: "Almabrands", group: "Protótipos" },
-  { id: "p-growth", label: "Growth Machine", group: "Protótipos" },
+  { id: "sobre",           label: "Sobre a Matter",    group: "Institucional"   },
+  { id: "cliente-incorpe", label: "INCORPE",            group: "Cliente"         },
+  { id: "incorpe",         label: "Proposta",           group: "Proposta"        },
+  { id: "resumo",          label: "Resumo Estratégico", group: "Proposta"        },
+  { id: "p-route",         label: "Smart Route",        group: "Produtos Matter" },
+  { id: "p-code",          label: "Smart Code",         group: "Produtos Matter" },
+  { id: "p-squad",         label: "Smart Squad",        group: "Produtos Matter" },
+  { id: "p-academy",       label: "Matter Academy",     group: "Produtos Matter" },
 ];
 
 function Index() {
@@ -73,7 +68,7 @@ function Index() {
         <div className="p-5 border-b border-border shrink-0">
           <img src={matterLogo} alt="Matter&Co." className="h-7" />
           <p className="text-[10px] text-muted-foreground font-mono uppercase tracking-widest mt-2 leading-relaxed">
-            Proposta · INCORPE<br />+ Show Auto Mall
+            Proposta · INCORPE
           </p>
         </div>
 
@@ -133,18 +128,14 @@ function Index() {
         </header>
 
         <main className="flex-1 px-4 md:px-10 py-10 md:py-14 w-full max-w-[1100px]">
-          {active === "sobre" && <SobreMatter />}
+          {active === "sobre"           && <SobreMatter />}
           {active === "cliente-incorpe" && <ClienteIncorpe />}
-          {active === "cliente-sam" && <ClienteShowAutoMall />}
-          {active === "incorpe" && <PropostaIncorpe />}
-          {active === "samall" && <PropostaShowAutoMall />}
-          {active === "resumo" && <Resumo />}
-          {active === "p-route" && <SmartRoutePrototype />}
-          {active === "p-code" && <SmartCodePrototype />}
-          {active === "p-squad" && <SmartSquadPrototype />}
-          {active === "p-academy" && <MatterAcademyPrototype />}
-          {active === "p-alma" && <AlmabrandsPrototype />}
-          {active === "p-growth" && <GrowthMachinePrototype />}
+          {active === "incorpe"         && <PropostaIncorpe />}
+          {active === "resumo"          && <Resumo />}
+          {active === "p-route"         && <SmartRoutePrototype />}
+          {active === "p-code"          && <SmartCodePrototype />}
+          {active === "p-squad"         && <SmartSquadPrototype />}
+          {active === "p-academy"       && <MatterAcademyPrototype />}
         </main>
 
         <footer className="border-t border-border bg-card/30 py-8 mt-10">

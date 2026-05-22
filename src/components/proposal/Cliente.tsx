@@ -1,8 +1,7 @@
 import incorpeLogo from "@/assets/incorpe-logo.png";
-import samLogo from "@/assets/showautomall-logo.png";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Globe, Target, Award, TrendingUp, Building2, MapPin, Users, CheckCircle2, Layers } from "lucide-react";
+import { Globe, Target, Award, TrendingUp, Building2, MapPin, CheckCircle2 } from "lucide-react";
 
 // ─────────────────────────────────────────────
 // INCORPE
@@ -90,99 +89,6 @@ export function ClienteIncorpe() {
           "Gerar percepção de confiança e segurança",
           "Potencializar geração de leads qualificados",
           "Ampliar presença digital e posicionamento institucional",
-        ]} />
-      </Card>
-    </div>
-  );
-}
-
-// ─────────────────────────────────────────────
-// SHOW AUTO MALL
-// ─────────────────────────────────────────────
-export function ClienteShowAutoMall() {
-  return (
-    <div className="space-y-10">
-      {/* Hero */}
-      <section className="relative overflow-hidden rounded-3xl border border-border bg-card p-8 md:p-12">
-        <div className="absolute inset-0 grid-bg opacity-30" />
-        <div className="absolute -top-20 -right-20 w-72 h-72 rounded-full bg-primary/15 blur-3xl" />
-        <div className="relative flex flex-col md:flex-row gap-6 items-start">
-          <div className="w-24 h-24 rounded-2xl bg-white p-3 flex items-center justify-center shrink-0">
-            <img src={samLogo} alt="Show Auto Mall BH" className="max-w-full max-h-full object-contain" />
-          </div>
-          <div className="flex-1">
-            <p className="text-xs text-primary font-mono uppercase tracking-widest mb-2">Cliente · Shopping Automotivo</p>
-            <h1 className="text-4xl md:text-5xl font-bold mb-3">Show Auto Mall BH</h1>
-            <p className="text-muted-foreground leading-relaxed max-w-2xl">
-              Shopping automotivo em Belo Horizonte com mais de 35 anos de tradição. Reúne lojistas, concessionárias e ampla variedade de veículos seminovos e novos em uma experiência completa de compra.
-            </p>
-            <div className="flex flex-wrap gap-3 mt-5">
-              <a href="https://showautomallbh.com.br/" target="_blank" rel="noreferrer"
-                className="inline-flex items-center gap-1.5 text-sm text-primary hover:underline">
-                <Globe className="w-3.5 h-3.5" /> showautomallbh.com.br
-              </a>
-              <Badge variant="outline" className="border-primary/30 text-primary">Shopping Automotivo</Badge>
-              <Badge variant="outline" className="border-border">+35 anos</Badge>
-              <Badge variant="outline" className="border-border">Belo Horizonte</Badge>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Info cards row */}
-      <div className="grid sm:grid-cols-3 gap-4">
-        <Card className="p-5 bg-card border-border flex items-start gap-3">
-          <Layers className="w-5 h-5 text-primary mt-0.5 shrink-0" />
-          <div>
-            <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1">Segmento</p>
-            <p className="font-semibold">Shopping Multimarcas</p>
-          </div>
-        </Card>
-        <Card className="p-5 bg-card border-border flex items-start gap-3">
-          <Users className="w-5 h-5 text-primary mt-0.5 shrink-0" />
-          <div>
-            <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1">Estrutura</p>
-            <p className="font-semibold">Lojistas + concessionárias</p>
-          </div>
-        </Card>
-        <Card className="p-5 bg-card border-border flex items-start gap-3">
-          <MapPin className="w-5 h-5 text-primary mt-0.5 shrink-0" />
-          <div>
-            <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1">Localização</p>
-            <p className="font-semibold">Belo Horizonte, MG</p>
-          </div>
-        </Card>
-      </div>
-
-      {/* Sections */}
-      <div className="grid md:grid-cols-2 gap-6">
-        <Card className="p-7 bg-card border-border">
-          <Section icon={Target} title="Posicionamento" items={[
-            "Referência regional em compra e venda de veículos",
-            "Conceito de \"shopping do automóvel\" — variedade, conveniência e experiência",
-            "Ambiente voltado para conforto, segurança e credibilidade",
-            "Forte presença em seminovos premium e multimarcas",
-          ]} />
-        </Card>
-
-        <Card className="p-7 bg-card border-border">
-          <Section icon={Award} title="Diferenciais Competitivos" items={[
-            "Mais de 35 anos de atuação",
-            "Diversos lojistas e concessionárias em um único espaço",
-            "Grande variedade de veículos novos e seminovos",
-            "Estrutura com espaço kids, pet friendly e ambiente familiar",
-            "Atendimento especializado e experiência diferenciada",
-          ]} />
-        </Card>
-      </div>
-
-      <Card className="p-7 bg-card border-border">
-        <Section icon={TrendingUp} title="Objetivos Estratégicos" items={[
-          "Consolidar posição como principal shopping automotivo da região",
-          "Fortalecer percepção de confiança e tradição",
-          "Aumentar fluxo de visitantes e oportunidades comerciais",
-          "Valorizar a experiência oferecida no espaço físico",
-          "Reforçar presença digital — performance e branding",
         ]} />
       </Card>
     </div>
