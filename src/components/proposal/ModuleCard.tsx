@@ -75,38 +75,57 @@ export function ModuleCard({ m }: { m: Module }) {
         </div>
       </div>
 
-      <div className="grid sm:grid-cols-2 gap-4 pt-6 border-t border-border">
-        <div className="flex items-center gap-3 p-4 rounded-xl bg-background/50 border border-border">
-          <Clock className="w-5 h-5 text-primary" />
-          <div>
-            <p className="text-xs uppercase tracking-wider text-muted-foreground">Execução</p>
-            <p className="font-bold">{m.duration}</p>
-          </div>
-        </div>
-        <div className="flex items-center gap-3 p-4 rounded-xl bg-gradient-gold text-primary-foreground">
-          <DollarSign className="w-5 h-5" />
-          <div>
-            <p className="text-xs uppercase tracking-wider opacity-80">Investimento</p>
-            <p className="font-bold text-lg">{m.investment}</p>
-            {m.investmentNote && <p className="text-xs opacity-80">{m.investmentNote}</p>}
-          </div>
-        </div>
-      </div>
-
-      {m.optionalAddons && m.optionalAddons.length > 0 && (
-        <div className={`grid gap-4 mt-4 ${m.optionalAddons.length > 1 ? "sm:grid-cols-2" : "sm:grid-cols-1 max-w-sm"}`}>
-          {m.optionalAddons.map((a) => (
-            <div key={a.name} className="flex items-center gap-3 p-4 rounded-xl bg-gradient-gold text-primary-foreground">
-              <Zap className="w-5 h-5 shrink-0" />
-              <div>
-                <p className="text-xs uppercase tracking-wider opacity-80">{a.name}</p>
-                <p className="font-bold text-lg">{a.value}</p>
-                <p className="text-xs opacity-70">Módulo opcional</p>
-              </div>
+      {(() => {
+        const addons = m.optionalAddons ?? [];
+        const investmentCard = (
+          <div className="flex items-center gap-3 p-4 rounded-xl bg-gradient-gold text-primary-foreground">
+            <DollarSign className="w-5 h-5 shrink-0" />
+            <div>
+              <p className="text-xs uppercase tracking-wider opacity-80">Investimento</p>
+              <p className="font-bold text-lg">{m.investment}</p>
+              {m.investmentNote && <p className="text-xs opacity-80">{m.investmentNote}</p>}
             </div>
-          ))}
-        </div>
-      )}
+          </div>
+        );
+        const durationCard = (
+          <div className="flex items-center gap-3 p-4 rounded-xl bg-background/50 border border-border">
+            <Clock className="w-5 h-5 text-primary shrink-0" />
+            <div>
+              <p className="text-xs uppercase tracking-wider text-muted-foreground">Execução</p>
+              <p className="font-bold">{m.duration}</p>
+            </div>
+          </div>
+        );
+
+        if (addons.length === 0) {
+          return (
+            <div className="grid sm:grid-cols-2 gap-4 pt-6 border-t border-border">
+              {durationCard}
+              {investmentCard}
+            </div>
+          );
+        }
+
+        return (
+          <div className="pt-6 border-t border-border space-y-4">
+            <div className="grid sm:grid-cols-2 gap-4">{durationCard}</div>
+            <div className="grid sm:grid-cols-2 gap-4">
+              {investmentCard}
+              {addons.map((a) => (
+                <div key={a.name} className="flex items-center gap-3 p-4 rounded-xl bg-gradient-gold text-primary-foreground">
+                  <Zap className="w-5 h-5 shrink-0" />
+                  <div>
+                    <p className="text-xs uppercase tracking-wider opacity-80">{a.name}</p>
+                    <p className="font-bold text-lg">{a.value}</p>
+                    <p className="text-xs opacity-70">Módulo opcional</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        );
+      })()}
+
     </Card>
   );
 }
