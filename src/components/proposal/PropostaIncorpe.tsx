@@ -127,15 +127,6 @@ const modules: Module[] = [
 
 const academy = [
   {
-    name: "AI Scan",
-    sub: "Diagnóstico",
-    icon: Gift,
-    time: "2 semanas",
-    price: "Gratuito",
-    desc: "Diagnostica a maturidade em IA da organização, mapeia a fluência dos colaboradores e gera clareza sobre onde começar.",
-    items: ["Diagnóstico organizacional", "Assessment individual de fluência", "Mapa de literacia por perfis", "Leitura de gaps e oportunidades", "Insumos para desenho de proposta", "Relatório de maturidade"],
-  },
-  {
     name: "AI Shift",
     sub: "Imersão Executiva",
     icon: Zap,
@@ -190,7 +181,7 @@ export function PropostaIncorpe() {
             <GraduationCap className="w-7 h-7" />
           </div>
           <div>
-            <p className="text-xs text-primary font-mono uppercase tracking-widest mb-1">MÓDULO 04</p>
+            <p className="text-xs text-primary font-mono uppercase tracking-widest mb-1">MÓDULO 05</p>
             <h3 className="text-2xl md:text-3xl font-bold">Matter Academy — Capacitação</h3>
             <p className="text-muted-foreground mt-1">Tirar o medo → Gerar linguagem comum → Destravar decisões</p>
           </div>
