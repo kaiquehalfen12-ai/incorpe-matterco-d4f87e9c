@@ -2,7 +2,7 @@ import { ProposalHeader } from "./ProposalHeader";
 import { ModuleCard, type Module } from "./ModuleCard";
 import { Card } from "@/components/ui/card";
 import incorpeLogo from "@/assets/incorpe-logo.png";
-import { Compass, Cpu, Users, GraduationCap, Calendar, Gift, Zap, Crown, BookOpen } from "lucide-react";
+import { Compass, Cpu, Users, GraduationCap, Calendar, Gift, Zap, Crown, BookOpen, Scan } from "lucide-react";
 
 const modules: Module[] = [
   {
