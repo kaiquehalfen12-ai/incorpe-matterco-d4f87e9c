@@ -145,18 +145,8 @@ const academy = [
     priceNote: "20 colaboradores · BRL 5.000 /mês",
     desc: "Jornada Faixa Branca → Verde → Marrom → Preta. Metodologia TD Matter para construção de cultura de IA.",
     items: ["Jornada por faixas (Branca → Preta)", "Treinamento contínuo (Metodologia TD Matter)", "Construção de cultura IA", "Formação prática em ferramentas de IA", "Certificação Matter Academy"],
-  },
-  {
-    name: "AI Next Prime",
-    sub: "Liderança",
-    icon: Crown,
-    time: "12 meses",
-    price: "BRL 500 /pessoa/mês",
-    priceNote: "Mínimo 4 líderes · BRL 2.000 /mês",
-    desc: "Para quem quer aprender IA com profundidade em grupo reduzido — sem o custo de uma mentoria individual.",
-    items: ["Grupo mínimo de 4 pessoas", "Formação prática em ferramentas de IA", "Aplicações no dia a dia profissional", "Desenvolvimento de novas competências digitais", "Certificação Matter Academy"],
-  },
 ];
+
 
 
 export function PropostaIncorpe() {
