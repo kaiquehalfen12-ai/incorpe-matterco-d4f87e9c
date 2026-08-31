@@ -6,11 +6,11 @@ import { DollarSign, Clock, Layers, Sparkles } from "lucide-react";
 type Item = { name: string; price: string; note?: string; optional?: boolean };
 
 const incorpeItems: Item[] = [
+  { name: "AI Scan",                   price: "BRL 19.880",             note: "Diagnóstico inicial · 100% desconto com Smart Route ou Smart Code" },
   { name: "Smart Route",               price: "1+4 de BRL 28.880",     note: "Fundação estratégica" },
   { name: "Smart Code",                price: "BRL 30.000",             note: "Tecnologia, IA & Automação" },
   { name: "Smart Squad",               price: "BRL 9.880 /mês",         note: "Evolução contínua",   optional: true },
   { name: "Smart Pulse",               price: "BRL 3.000 /mês",         note: "Manutenção",          optional: true },
-  { name: "Matter Academy · AI Scan",  price: "Gratuito",               note: "Diagnóstico inicial" },
   { name: "Matter Academy · AI Shift", price: "BRL 980 /pessoa",        note: "20 part. = BRL 19.600" },
   { name: "Matter Academy · AI Next",  price: "BRL 250 /pessoa/mês",    note: "20 part. = BRL 5.000/mês" },
 ];
@@ -47,8 +47,8 @@ export function Resumo() {
           <Layers className="w-5 h-5 text-primary mt-0.5 shrink-0" />
           <div>
             <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1">Módulos</p>
-            <p className="text-3xl font-bold text-gradient-gold">4</p>
-            <p className="text-xs text-muted-foreground mt-1">Smart Route · Code · Squad · Academy</p>
+            <p className="text-3xl font-bold text-gradient-gold">5</p>
+            <p className="text-xs text-muted-foreground mt-1">AI Scan · Smart Route · Code · Squad · Academy</p>
           </div>
         </Card>
         <Card className="p-6 bg-card border-border flex items-start gap-3">
@@ -63,8 +63,8 @@ export function Resumo() {
           <DollarSign className="w-5 h-5 text-primary mt-0.5 shrink-0" />
           <div>
             <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1">Investimento de entrada</p>
-            <p className="text-2xl font-bold text-gradient-gold">BRL 28.880</p>
-            <p className="text-xs text-muted-foreground mt-1">Modelo 1+4</p>
+            <p className="text-2xl font-bold text-gradient-gold">BRL 19.880</p>
+            <p className="text-xs text-muted-foreground mt-1">AI Scan</p>
           </div>
         </Card>
       </div>
@@ -129,7 +129,7 @@ export function Resumo() {
           <div className="space-y-3">
             <div className="p-4 rounded-xl bg-primary-foreground/10 backdrop-blur">
               <p className="text-xs uppercase tracking-wider opacity-70">Total de módulos</p>
-              <p className="text-3xl font-bold">4</p>
+              <p className="text-3xl font-bold">5</p>
             </div>
             <div className="p-4 rounded-xl bg-primary-foreground/10 backdrop-blur">
               <p className="text-xs uppercase tracking-wider opacity-70">Empresas do ecossistema</p>

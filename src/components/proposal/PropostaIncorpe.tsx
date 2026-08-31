@@ -2,11 +2,35 @@ import { ProposalHeader } from "./ProposalHeader";
 import { ModuleCard, type Module } from "./ModuleCard";
 import { Card } from "@/components/ui/card";
 import incorpeLogo from "@/assets/incorpe-logo.png";
-import { Compass, Cpu, Users, GraduationCap, Calendar, Gift, Zap, Crown, BookOpen } from "lucide-react";
+import { Compass, Cpu, Users, GraduationCap, Calendar, Gift, Zap, Crown, BookOpen, Scan } from "lucide-react";
 
 const modules: Module[] = [
   {
     number: "01",
+    name: "AI Scan",
+    subtitle: "Escaneamento de Maturidade em IA",
+    icon: Scan,
+    description: "Escaneamento de maturidade de IA da empresa, avaliando ferramentas, pessoas, cultura, processos e governança.",
+    objective: [
+      "Mapear a maturidade atual em IA",
+      "Identificar gaps e oportunidades de aplicação",
+      "Desenhar plano de evolução para níveis avançados de IA",
+    ],
+    deliverables: [
+      "Avaliação de ferramentas de IA em uso e disponíveis",
+      "Diagnóstico de maturidade das pessoas e da cultura em relação à IA",
+      "Mapeamento de processos e oportunidades de aplicação de IA",
+      "Avaliação da governança de dados e de IA",
+      "Score de maturidade por dimensão",
+      "Plano de ação para evolução a níveis mais avançados de IA",
+    ],
+    duration: "4 semanas",
+    investment: "BRL 19.880",
+    investmentNote: "100% de desconto ao contratar Smart Route ou Smart Code",
+    badge: "Diagnóstico",
+  },
+  {
+    number: "02",
     name: "Smart Route",
     subtitle: "Plano Estratégico de Escala e Eficiência",
     icon: Compass,
@@ -41,7 +65,7 @@ const modules: Module[] = [
     highlight: true,
   },
   {
-    number: "02",
+    number: "03",
     name: "Smart Code",
     subtitle: "Núcleo de Tecnologia, IA e Automação",
     icon: Cpu,
@@ -71,7 +95,7 @@ const modules: Module[] = [
     investment: "BRL 30.000",
   },
   {
-    number: "03",
+    number: "04",
     name: "Smart Squad",
     subtitle: "Evolução contínua e Operação de Inteligência",
     icon: Users,
@@ -102,15 +126,6 @@ const modules: Module[] = [
 ];
 
 const academy = [
-  {
-    name: "AI Scan",
-    sub: "Diagnóstico",
-    icon: Gift,
-    time: "2 semanas",
-    price: "Gratuito",
-    desc: "Diagnostica a maturidade em IA da organização, mapeia a fluência dos colaboradores e gera clareza sobre onde começar.",
-    items: ["Diagnóstico organizacional", "Assessment individual de fluência", "Mapa de literacia por perfis", "Leitura de gaps e oportunidades", "Insumos para desenho de proposta", "Relatório de maturidade"],
-  },
   {
     name: "AI Shift",
     sub: "Imersão Executiva",
@@ -166,7 +181,7 @@ export function PropostaIncorpe() {
             <GraduationCap className="w-7 h-7" />
           </div>
           <div>
-            <p className="text-xs text-primary font-mono uppercase tracking-widest mb-1">MÓDULO 04</p>
+            <p className="text-xs text-primary font-mono uppercase tracking-widest mb-1">MÓDULO 05</p>
             <h3 className="text-2xl md:text-3xl font-bold">Matter Academy — Capacitação</h3>
             <p className="text-muted-foreground mt-1">Tirar o medo → Gerar linguagem comum → Destravar decisões</p>
           </div>

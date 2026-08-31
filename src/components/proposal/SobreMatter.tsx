@@ -17,7 +17,6 @@ const companies = [
   { name: "BASE/labs", tag: "Inovação em Software" },
   { name: "BASE 2", tag: "Qualidade em Software" },
   { name: "Almabrands", tag: "Marketing Estratégico" },
-  { name: "Direciona.me", tag: "Desenvolvimento Profissional" },
   { name: "Matter Academy", tag: "Educação Corporativa" },
 ];
 
@@ -75,7 +74,7 @@ export function SobreMatter() {
       <section>
         <div className="mb-10">
           <p className="text-primary font-mono text-sm uppercase tracking-widest mb-2">Ecossistema</p>
-          <h2 className="text-3xl md:text-5xl font-bold">7 empresas. 1 inteligência integrada.</h2>
+          <h2 className="text-3xl md:text-5xl font-bold">6 empresas. 1 inteligência integrada.</h2>
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
           {companies.map((c) => (
