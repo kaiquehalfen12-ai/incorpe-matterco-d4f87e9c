@@ -7,6 +7,30 @@ import { Compass, Cpu, Users, GraduationCap, Calendar, Gift, Zap, Crown, BookOpe
 const modules: Module[] = [
   {
     number: "01",
+    name: "AI Scan",
+    subtitle: "Escaneamento de Maturidade em IA",
+    icon: Scan,
+    description: "Escaneamento de maturidade de IA da empresa, avaliando ferramentas, pessoas, cultura, processos e governança.",
+    objective: [
+      "Mapear a maturidade atual em IA",
+      "Identificar gaps e oportunidades de aplicação",
+      "Desenhar plano de evolução para níveis avançados de IA",
+    ],
+    deliverables: [
+      "Avaliação de ferramentas de IA em uso e disponíveis",
+      "Diagnóstico de maturidade das pessoas e da cultura em relação à IA",
+      "Mapeamento de processos e oportunidades de aplicação de IA",
+      "Avaliação da governança de dados e de IA",
+      "Score de maturidade por dimensão",
+      "Plano de ação para evolução a níveis mais avançados de IA",
+    ],
+    duration: "4 semanas",
+    investment: "BRL 19.880",
+    investmentNote: "100% de desconto ao contratar Smart Route ou Smart Code",
+    badge: "Diagnóstico",
+  },
+  {
+    number: "02",
     name: "Smart Route",
     subtitle: "Plano Estratégico de Escala e Eficiência",
     icon: Compass,
@@ -41,7 +65,7 @@ const modules: Module[] = [
     highlight: true,
   },
   {
-    number: "02",
+    number: "03",
     name: "Smart Code",
     subtitle: "Núcleo de Tecnologia, IA e Automação",
     icon: Cpu,
@@ -71,7 +95,7 @@ const modules: Module[] = [
     investment: "BRL 30.000",
   },
   {
-    number: "03",
+    number: "04",
     name: "Smart Squad",
     subtitle: "Evolução contínua e Operação de Inteligência",
     icon: Users,
