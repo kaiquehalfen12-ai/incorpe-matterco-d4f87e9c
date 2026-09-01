@@ -529,7 +529,7 @@ export function MatterAcademyPrototype() {
       <Hero icon={GraduationCap} eyebrow="Produto · Matter Academy" title="Capacitação executiva em IA aplicada" subtitle="Tirar o medo → Gerar linguagem comum → Destravar decisões." />
 
       <div className="grid md:grid-cols-4 gap-4">
-        <KPI label="Programas" value="4" sub="Scan · Shift · Next · Prime" icon={BookOpen} />
+        <KPI label="Programas" value="3" sub="Scan · Shift · Next" icon={BookOpen} />
         <KPI label="Carga total (Next)" value="12m" sub="4 faixas progressivas" icon={Award} />
         <KPI label="Mín. participantes" value="20" sub="Shift / Next" icon={Users} />
         <KPI label="Taxa de conclusão" value="88%" sub="média histórica" icon={Star} />
@@ -842,6 +842,30 @@ function KPI({ label, value, sub, icon: Icon, accent }: { label: string; value: 
       </div>
       <p className="text-3xl font-bold">{value}</p>
       {sub && <p className="text-xs text-muted-foreground mt-1">{sub}</p>}
+    </Card>
+  );
+}
+
+function EcosystemStats() {
+  const stats = [
+    { v: "20+", l: "anos de experiência" },
+    { v: "3750+", l: "projetos realizados" },
+    { v: "250+", l: "colaboradores" },
+    { v: "30+", l: "setores atendidos" },
+    { v: "9", l: "empresas no ecossistema" },
+  ];
+  return (
+    <Card className="p-6 bg-card border-border">
+      <h3 className="text-lg font-bold mb-1">Lastro do ecossistema Matter</h3>
+      <p className="text-sm text-muted-foreground mb-5">Expertises complementares com tecnologia e estratégia para impulsionar o crescimento.</p>
+      <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
+        {stats.map((s) => (
+          <div key={s.l} className="p-4 rounded-xl bg-background/50 border border-border text-center">
+            <p className="text-2xl font-bold text-primary">{s.v}</p>
+            <p className="text-[11px] text-muted-foreground mt-1">{s.l}</p>
+          </div>
+        ))}
+      </div>
     </Card>
   );
 }
