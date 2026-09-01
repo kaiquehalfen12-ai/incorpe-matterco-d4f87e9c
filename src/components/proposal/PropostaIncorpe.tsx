@@ -130,7 +130,7 @@ const academy = [
     name: "AI Shift",
     sub: "Imersão Executiva",
     icon: Zap,
-    time: "2 dias de imersão",
+    time: "8 horas de imersão",
     price: "BRL 980 /pessoa",
     priceNote: "20 colaboradores · Total BRL 19.600 (de BRL 1.500)",
     desc: "Programa de formação acessível em IA aplicada ao trabalho e negócios, para profissionais e empresas em transição digital.",

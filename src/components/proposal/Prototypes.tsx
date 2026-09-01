@@ -629,7 +629,7 @@ export function MatterAcademyPrototype() {
           </div>
           <div>
             <h3 className="text-xl font-bold">AI Shift — camada de ativação</h3>
-            <p className="text-xs text-muted-foreground">Imersão aplicada de curta duração: clareza, priorização e ativação.</p>
+            <p className="text-xs text-muted-foreground">Imersão aplicada de 8 horas: clareza, priorização e ativação.</p>
           </div>
         </div>
         <p className="text-sm text-foreground/80 leading-relaxed mb-6">
@@ -666,8 +666,8 @@ export function MatterAcademyPrototype() {
 
         <div className="grid md:grid-cols-2 gap-3 mb-6">
           <div className="p-4 rounded-xl bg-background/50 border border-border">
-            <p className="font-bold text-sm mb-1">Formato 16h · 2 dias</p>
-            <p className="text-xs text-muted-foreground">Dia 1: diagnóstico, benchmark e redesenho. Dia 2: aprofundamento técnico, laboratório ampliado, prototipação avançada e consolidação executiva.</p>
+            <p className="font-bold text-sm mb-1">Formato 8h · 1 dia</p>
+            <p className="text-xs text-muted-foreground">Imersão intensiva com diagnóstico ao vivo, benchmark de casos, oficina de redesenho de processos, prototipação de fluxos e consolidação executiva de próximos passos.</p>
           </div>
           <div className="p-4 rounded-xl bg-background/50 border border-border">
             <p className="font-bold text-sm mb-1">Customização In Company</p>
