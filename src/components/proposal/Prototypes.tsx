@@ -182,7 +182,30 @@ export function SmartRoutePrototype() {
           ))}
         </div>
       </Card>
+
+      <Card className="p-6 bg-card border-border">
+        <h3 className="text-lg font-bold mb-2 flex items-center gap-2"><Compass className="w-4 h-4 text-primary" />Escopo Matter — pilar Service</h3>
+        <p className="text-sm text-muted-foreground mb-5">Consultoria estratégica que combina inteligência de mercado, planejamento e execução: modelagem, governança, finanças e growth.</p>
+        <div className="grid md:grid-cols-2 gap-3">
+          {[
+            { n: "Smart Route", d: "Planejamento estratégico voltado ao futuro do mercado, com foco em IA, transformação digital e novas competências organizacionais." },
+            { n: "Smart Model", d: "Modelagem de negócios orientada à nova economia digital, integrando tecnologia, dados e IA ao desenho estratégico." },
+            { n: "Smart Growth", d: "Inteligência comercial potencializada por IA para acelerar vendas e conquistar novos mercados." },
+            { n: "Smart Board", d: "Profissionalização da gestão e plano de sucessão para garantir continuidade e sustentabilidade do negócio." },
+            { n: "Smart Budget", d: "Disciplina financeira em 3 frentes de orçamento — empresarial, benefícios e misto — em um só produto." },
+            { n: "People AI", d: "Consultoria em Gestão de Pessoas: performance, cultura organizacional e desenvolvimento contínuo." },
+          ].map((s) => (
+            <div key={s.n} className="p-4 rounded-xl bg-background/50 border border-border hover:border-primary/40 transition-colors">
+              <p className="font-bold text-sm mb-1">{s.n}</p>
+              <p className="text-xs text-muted-foreground leading-relaxed">{s.d}</p>
+            </div>
+          ))}
+        </div>
+      </Card>
+
+      <EcosystemStats />
     </div>
+
   );
 }
 
@@ -311,7 +334,27 @@ export function SmartCodePrototype() {
         </div>
         <IllustrativeNote />
       </Card>
+
+      <Card className="p-6 bg-card border-border">
+        <h3 className="text-lg font-bold mb-2 flex items-center gap-2"><Cpu className="w-4 h-4 text-primary" />Escopo Matter — pilar Tech</h3>
+        <p className="text-sm text-muted-foreground mb-5">Tecnologia e inteligência artificial aplicadas para otimizar processos e criar soluções digitais sob medida.</p>
+        <div className="grid md:grid-cols-2 gap-3">
+          {[
+            { n: "Smart Code", d: "Aplicativo de gestão exclusivo para o negócio, com as principais integrações do sistema em um só lugar." },
+            { n: "Smart IA", d: "Mapeamento de processos e implantação de ferramentas de IA para otimizar a operação." },
+            { n: "Smart Oracle", d: "Oráculo da empresa: centraliza o conhecimento disperso da organização, consultável por IA." },
+            { n: "Smart Builder", d: "Ciclo completo de uma obra, integrado — do orçamento à entrega, em um só sistema." },
+            { n: "IA Scan", d: "Escaneamento de maturidade de IA: ferramentas, pessoas, cultura, processos e governança." },
+          ].map((s) => (
+            <div key={s.n} className="p-4 rounded-xl bg-background/50 border border-border hover:border-primary/40 transition-colors">
+              <p className="font-bold text-sm mb-1">{s.n}</p>
+              <p className="text-xs text-muted-foreground leading-relaxed">{s.d}</p>
+            </div>
+          ))}
+        </div>
+      </Card>
     </div>
+
   );
 }
 
@@ -439,7 +482,28 @@ export function SmartSquadPrototype() {
           ))}
         </div>
       </Card>
+
+      <Card className="p-6 bg-card border-border">
+        <h3 className="text-lg font-bold mb-2 flex items-center gap-2"><Layers className="w-4 h-4 text-primary" />Como o squad conecta os três pilares Matter</h3>
+        <p className="text-sm text-muted-foreground mb-5">O Smart Squad opera de forma sinérgica entre Learn, Service e Tech, mantendo o roadmap tecnológico vivo.</p>
+        <div className="grid md:grid-cols-3 gap-3">
+          {[
+            { n: "Learn", d: "Capacitação prática e personalizada em IA, programas premium, imersões e transformação digital.", icon: GraduationCap },
+            { n: "Service", d: "Consultoria estratégica: inteligência de mercado, planejamento, governança, finanças e growth.", icon: Compass },
+            { n: "Tech", d: "IA aplicada, mapeamento de processos, desenvolvimento de produtos digitais e automação.", icon: Cpu },
+          ].map((p) => (
+            <div key={p.n} className="p-5 rounded-xl bg-background/50 border border-border">
+              <p.icon className="w-5 h-5 text-primary mb-3" />
+              <p className="font-bold">{p.n}</p>
+              <p className="text-xs text-muted-foreground mt-1 leading-relaxed">{p.d}</p>
+            </div>
+          ))}
+        </div>
+      </Card>
+
+      <EcosystemStats />
     </div>
+
   );
 }
 
