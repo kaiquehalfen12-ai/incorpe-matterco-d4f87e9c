@@ -145,6 +145,7 @@ const academy = [
     priceNote: "20 colaboradores · BRL 5.000 /mês",
     desc: "Jornada Faixa Branca → Verde → Marrom → Preta. Metodologia TD Matter para construção de cultura de IA.",
     items: ["Jornada por faixas (Branca → Preta)", "Treinamento contínuo (Metodologia TD Matter)", "Construção de cultura IA", "Formação prática em ferramentas de IA", "Certificação Matter Academy"],
+  },
 ];
 
 
