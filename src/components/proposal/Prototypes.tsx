@@ -182,7 +182,30 @@ export function SmartRoutePrototype() {
           ))}
         </div>
       </Card>
+
+      <Card className="p-6 bg-card border-border">
+        <h3 className="text-lg font-bold mb-2 flex items-center gap-2"><Compass className="w-4 h-4 text-primary" />Escopo Matter — pilar Service</h3>
+        <p className="text-sm text-muted-foreground mb-5">Consultoria estratégica que combina inteligência de mercado, planejamento e execução: modelagem, governança, finanças e growth.</p>
+        <div className="grid md:grid-cols-2 gap-3">
+          {[
+            { n: "Smart Route", d: "Planejamento estratégico voltado ao futuro do mercado, com foco em IA, transformação digital e novas competências organizacionais." },
+            { n: "Smart Model", d: "Modelagem de negócios orientada à nova economia digital, integrando tecnologia, dados e IA ao desenho estratégico." },
+            { n: "Smart Growth", d: "Inteligência comercial potencializada por IA para acelerar vendas e conquistar novos mercados." },
+            { n: "Smart Board", d: "Profissionalização da gestão e plano de sucessão para garantir continuidade e sustentabilidade do negócio." },
+            { n: "Smart Budget", d: "Disciplina financeira em 3 frentes de orçamento — empresarial, benefícios e misto — em um só produto." },
+            { n: "People AI", d: "Consultoria em Gestão de Pessoas: performance, cultura organizacional e desenvolvimento contínuo." },
+          ].map((s) => (
+            <div key={s.n} className="p-4 rounded-xl bg-background/50 border border-border hover:border-primary/40 transition-colors">
+              <p className="font-bold text-sm mb-1">{s.n}</p>
+              <p className="text-xs text-muted-foreground leading-relaxed">{s.d}</p>
+            </div>
+          ))}
+        </div>
+      </Card>
+
+      <EcosystemStats />
     </div>
+
   );
 }
 
@@ -311,7 +334,27 @@ export function SmartCodePrototype() {
         </div>
         <IllustrativeNote />
       </Card>
+
+      <Card className="p-6 bg-card border-border">
+        <h3 className="text-lg font-bold mb-2 flex items-center gap-2"><Cpu className="w-4 h-4 text-primary" />Escopo Matter — pilar Tech</h3>
+        <p className="text-sm text-muted-foreground mb-5">Tecnologia e inteligência artificial aplicadas para otimizar processos e criar soluções digitais sob medida.</p>
+        <div className="grid md:grid-cols-2 gap-3">
+          {[
+            { n: "Smart Code", d: "Aplicativo de gestão exclusivo para o negócio, com as principais integrações do sistema em um só lugar." },
+            { n: "Smart IA", d: "Mapeamento de processos e implantação de ferramentas de IA para otimizar a operação." },
+            { n: "Smart Oracle", d: "Oráculo da empresa: centraliza o conhecimento disperso da organização, consultável por IA." },
+            { n: "Smart Builder", d: "Ciclo completo de uma obra, integrado — do orçamento à entrega, em um só sistema." },
+            { n: "IA Scan", d: "Escaneamento de maturidade de IA: ferramentas, pessoas, cultura, processos e governança." },
+          ].map((s) => (
+            <div key={s.n} className="p-4 rounded-xl bg-background/50 border border-border hover:border-primary/40 transition-colors">
+              <p className="font-bold text-sm mb-1">{s.n}</p>
+              <p className="text-xs text-muted-foreground leading-relaxed">{s.d}</p>
+            </div>
+          ))}
+        </div>
+      </Card>
     </div>
+
   );
 }
 
@@ -439,7 +482,28 @@ export function SmartSquadPrototype() {
           ))}
         </div>
       </Card>
+
+      <Card className="p-6 bg-card border-border">
+        <h3 className="text-lg font-bold mb-2 flex items-center gap-2"><Layers className="w-4 h-4 text-primary" />Como o squad conecta os três pilares Matter</h3>
+        <p className="text-sm text-muted-foreground mb-5">O Smart Squad opera de forma sinérgica entre Learn, Service e Tech, mantendo o roadmap tecnológico vivo.</p>
+        <div className="grid md:grid-cols-3 gap-3">
+          {[
+            { n: "Learn", d: "Capacitação prática e personalizada em IA, programas premium, imersões e transformação digital.", icon: GraduationCap },
+            { n: "Service", d: "Consultoria estratégica: inteligência de mercado, planejamento, governança, finanças e growth.", icon: Compass },
+            { n: "Tech", d: "IA aplicada, mapeamento de processos, desenvolvimento de produtos digitais e automação.", icon: Cpu },
+          ].map((p) => (
+            <div key={p.n} className="p-5 rounded-xl bg-background/50 border border-border">
+              <p.icon className="w-5 h-5 text-primary mb-3" />
+              <p className="font-bold">{p.n}</p>
+              <p className="text-xs text-muted-foreground mt-1 leading-relaxed">{p.d}</p>
+            </div>
+          ))}
+        </div>
+      </Card>
+
+      <EcosystemStats />
     </div>
+
   );
 }
 
@@ -465,7 +529,7 @@ export function MatterAcademyPrototype() {
       <Hero icon={GraduationCap} eyebrow="Produto · Matter Academy" title="Capacitação executiva em IA aplicada" subtitle="Tirar o medo → Gerar linguagem comum → Destravar decisões." />
 
       <div className="grid md:grid-cols-4 gap-4">
-        <KPI label="Programas" value="4" sub="Scan · Shift · Next · Prime" icon={BookOpen} />
+        <KPI label="Programas" value="3" sub="Scan · Shift · Next" icon={BookOpen} />
         <KPI label="Carga total (Next)" value="12m" sub="4 faixas progressivas" icon={Award} />
         <KPI label="Mín. participantes" value="20" sub="Shift / Next" icon={Users} />
         <KPI label="Taxa de conclusão" value="88%" sub="média histórica" icon={Star} />
@@ -541,10 +605,9 @@ export function MatterAcademyPrototype() {
           <h3 className="text-lg font-bold mb-4">Investimento — visão consolidada</h3>
           <div className="space-y-2">
             {[
-              { p: "AI Scan", v: "Gratuito", n: "2 semanas" },
+              { p: "AI Scan", v: "BRL 19.880", n: "4 semanas · 100% desconto com Smart Route ou Smart Code" },
               { p: "AI Shift", v: "BRL 980/pessoa", n: "20 part. = BRL 19.600" },
               { p: "AI Next", v: "BRL 250/pessoa/mês", n: "20 part. = BRL 5.000/mês" },
-              { p: "AI Next Prime", v: "BRL 500/pessoa/mês", n: "min. 4 = BRL 2.000/mês" },
             ].map((i) => (
               <div key={i.p} className="flex items-center justify-between p-3 rounded-lg bg-background/50 border border-border">
                 <div>
@@ -557,7 +620,196 @@ export function MatterAcademyPrototype() {
           </div>
         </Card>
       </div>
+
+      {/* ===== AI SHIFT ===== */}
+      <Card className="p-6 md:p-8 bg-card border-border">
+        <div className="flex items-center gap-3 mb-2">
+          <div className="w-10 h-10 rounded-xl bg-primary/10 border border-primary/30 flex items-center justify-center">
+            <Zap className="w-5 h-5 text-primary" />
+          </div>
+          <div>
+            <h3 className="text-xl font-bold">AI Shift — camada de ativação</h3>
+            <p className="text-xs text-muted-foreground">Imersão aplicada de curta duração: clareza, priorização e ativação.</p>
+          </div>
+        </div>
+        <p className="text-sm text-foreground/80 leading-relaxed mb-6">
+          O AI Shift encurta a distância entre interesse em IA e aplicação prática, criando um ambiente intensivo em que
+          equipes e lideranças identificam oportunidades, redesenham processos e saem com direção clara para agir.
+        </p>
+
+        <div className="grid md:grid-cols-2 gap-3 mb-6">
+          <div className="p-4 rounded-xl bg-background/50 border border-border">
+            <p className="text-xs uppercase tracking-wider text-muted-foreground mb-1">Antes</p>
+            <p className="text-sm">Equipe com compreensão difusa sobre o potencial da IA e baixa clareza sobre como aplicá-la no contexto real.</p>
+          </div>
+          <div className="p-4 rounded-xl bg-background/50 border border-primary/40">
+            <p className="text-xs uppercase tracking-wider text-primary mb-1">Depois</p>
+            <p className="text-sm">Oportunidades priorizadas, processos redesenhados e direção prática para avançar na aplicação de IA na área.</p>
+          </div>
+        </div>
+
+        <h4 className="font-bold text-sm uppercase tracking-wider mb-3">Estrutura da imersão · formato 8h</h4>
+        <div className="space-y-2 mb-6">
+          {[
+            { b: "Bloco 1", t: "Diagnóstico ao vivo — leitura de fricções, oportunidades e contexto." },
+            { b: "Bloco 2", t: "Casos e referências — benchmark de aplicações relevantes." },
+            { b: "Bloco 3", t: "Oficina de redesenho — processos críticos trabalhados com IA." },
+            { b: "Bloco 4", t: "Prototipação — fluxos, hipóteses e modelos de viabilidade imediata." },
+            { b: "Bloco 5", t: "Síntese e priorização — próximos passos, responsáveis e direção." },
+          ].map((x) => (
+            <div key={x.b} className="flex items-start gap-3 p-3 rounded-lg bg-background/50 border border-border">
+              <Badge variant="outline" className="shrink-0 text-[10px]">{x.b}</Badge>
+              <p className="text-sm text-muted-foreground">{x.t}</p>
+            </div>
+          ))}
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-3 mb-6">
+          <div className="p-4 rounded-xl bg-background/50 border border-border">
+            <p className="font-bold text-sm mb-1">Formato 16h · 2 dias</p>
+            <p className="text-xs text-muted-foreground">Dia 1: diagnóstico, benchmark e redesenho. Dia 2: aprofundamento técnico, laboratório ampliado, prototipação avançada e consolidação executiva.</p>
+          </div>
+          <div className="p-4 rounded-xl bg-background/50 border border-border">
+            <p className="font-bold text-sm mb-1">Customização In Company</p>
+            <p className="text-xs text-muted-foreground">Seleção de casos de uso, adaptação de linguagem, definição prévia de processos críticos e calibragem da profundidade técnica ao nível de fluência da equipe.</p>
+          </div>
+        </div>
+
+        <h4 className="font-bold text-sm uppercase tracking-wider mb-3">Variantes por área</h4>
+        <div className="flex flex-wrap gap-2 mb-6">
+          {["Vendas", "Marketing", "Financeiro", "RH / People", "Jurídico", "Operações", "Tecnologia", "Atendimento", "Customizado"].map((v) => (
+            <Badge key={v} className="bg-primary/10 border border-primary/30 text-primary">{v}</Badge>
+          ))}
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-6">
+          <div>
+            <h4 className="font-bold text-sm uppercase tracking-wider mb-3">Add-ons</h4>
+            <ul className="space-y-1.5">
+              {[
+                "Sessão de Expansão (30 dias)",
+                "Sessão de Expansão (60 dias)",
+                "Mentoria de Implementação",
+                "Playbook da Área",
+                "AI Shift Lite (pré-imersão)",
+                "Pacote Multi-Área",
+                "Apresentação para Liderança",
+              ].map((a) => (
+                <li key={a} className="text-xs text-muted-foreground flex gap-2"><span className="text-primary">▸</span>{a}</li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h4 className="font-bold text-sm uppercase tracking-wider mb-3">Entregáveis</h4>
+            <ul className="space-y-1.5">
+              {[
+                "Mapa de oportunidades com IA por área",
+                "Processos redesenhados",
+                "Direção prática com responsáveis e prazos",
+                "Síntese executiva da imersão",
+                "Playbook da área (quando contratado)",
+                "Participante: registro de participação, material, prompts e frameworks",
+                "Participante: trilha complementar na plataforma Matter",
+              ].map((a) => (
+                <li key={a} className="text-xs text-muted-foreground flex gap-2"><CheckCircle2 className="w-3.5 h-3.5 text-primary shrink-0 mt-0.5" />{a}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </Card>
+
+      {/* ===== AI NEXT ===== */}
+      <Card className="p-6 md:p-8 bg-card border-border">
+        <div className="flex items-center gap-3 mb-2">
+          <div className="w-10 h-10 rounded-xl bg-primary/10 border border-primary/30 flex items-center justify-center">
+            <BookOpen className="w-5 h-5 text-primary" />
+          </div>
+          <div>
+            <h3 className="text-xl font-bold">AI Next — família central da Academy</h3>
+            <p className="text-xs text-muted-foreground">Sistema contínuo de desenvolvimento em IA aplicada, com progressão por faixas.</p>
+          </div>
+        </div>
+        <p className="text-sm text-foreground/80 leading-relaxed mb-6">
+          O AI Next transforma aprendizado em capacidade instalada. Programa contínuo de 6 ou 12 meses, com entregáveis
+          concretos por faixa: o participante deixa o uso pontual e passa a operar com método, repertório e visão estratégica.
+        </p>
+
+        <h4 className="font-bold text-sm uppercase tracking-wider mb-3">Simbologia das faixas</h4>
+        <div className="grid md:grid-cols-2 gap-3 mb-6">
+          {[
+            { n: "Faixa Branca", s: "Início, abertura e base", d: "Fundamentos da IA e primeiros fluxos de aplicação: linguagem, contexto, ferramentas e primeiros usos conectados ao trabalho real." },
+            { n: "Faixa Verde", s: "Crescimento e enraizamento", d: "Aplicação prática em processos e áreas de negócio, com autonomia inicial para redesenhar fluxos e gerar resultados tangíveis." },
+            { n: "Faixa Marrom", s: "Maturidade e domínio aplicado", d: "Criação de produtos, soluções e novas entregas com IA — a aplicação passa a gerar novos outputs e frentes de inovação." },
+            { n: "Faixa Preta", s: "Maestria, visão sistêmica e multiplicação", d: "Estratégia, governança e multiplicação interna: estrutura adoção e se torna referência de aplicação avançada." },
+          ].map((b) => (
+            <div key={b.n} className="p-4 rounded-xl bg-background/50 border border-border">
+              <p className="font-bold text-sm">{b.n}</p>
+              <p className="text-[11px] text-primary uppercase tracking-wider mb-2">{b.s}</p>
+              <p className="text-xs text-muted-foreground leading-relaxed">{b.d}</p>
+            </div>
+          ))}
+        </div>
+
+        <div className="p-4 rounded-xl bg-background/50 border border-border mb-6">
+          <p className="font-bold text-sm mb-1">Estrutura por faixa · 12 semanas</p>
+          <p className="text-xs text-muted-foreground">Alinhamento inicial → módulos aplicados → desafio prático conectado ao contexto real → encontros de troca → validação do entregável final.</p>
+        </div>
+
+        <h4 className="font-bold text-sm uppercase tracking-wider mb-3">Formatos de programa</h4>
+        <div className="grid md:grid-cols-3 gap-3 mb-6">
+          {[
+            { n: "AI Next Aberto", d: "Turmas abertas para profissionais e grupos mistos, com progressão por faixas e comunidade." },
+            { n: "AI Next In Company", d: "Programa corporativo com customização de contexto e leitura de evolução ao longo da jornada." },
+            { n: "Plataforma AI Next", d: "Trilhas assíncronas, biblioteca de casos, agentes de prática guiada e indicadores de ativação para RH e liderança." },
+          ].map((f) => (
+            <div key={f.n} className="p-4 rounded-xl bg-background/50 border border-border">
+              <p className="font-bold text-sm mb-1">{f.n}</p>
+              <p className="text-xs text-muted-foreground leading-relaxed">{f.d}</p>
+            </div>
+          ))}
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-6">
+          <div>
+            <h4 className="font-bold text-sm uppercase tracking-wider mb-3">Add-ons</h4>
+            <ul className="space-y-1.5">
+              {[
+                "Mentoria individual por faixa",
+                "Mentoria coletiva quinzenal",
+                "Workshop de Liderança AI-First",
+                "Aceleração de faixa",
+                "Relatório de progresso trimestral",
+                "Formação de multiplicadores internos",
+                "Acesso ao AI Next Summit",
+              ].map((a) => (
+                <li key={a} className="text-xs text-muted-foreground flex gap-2"><span className="text-primary">▸</span>{a}</li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h4 className="font-bold text-sm uppercase tracking-wider mb-3">Entregáveis</h4>
+            <ul className="space-y-1.5">
+              {[
+                "Leitura de maturidade e progresso por colaborador",
+                "Atualização de fluência por faixa",
+                "Protótipos e projetos aplicados",
+                "Relatório final com recomendações de continuidade",
+                "Participante: certificação por etapa concluída",
+                "Participante: portfólio de entregas e acesso à biblioteca Matter",
+              ].map((a) => (
+                <li key={a} className="text-xs text-muted-foreground flex gap-2"><CheckCircle2 className="w-3.5 h-3.5 text-primary shrink-0 mt-0.5" />{a}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <div className="mt-6 p-4 rounded-xl bg-gradient-gold text-primary-foreground">
+          <p className="text-xs uppercase tracking-wider opacity-80 mb-1">Diagnóstico e assessment</p>
+          <p className="text-sm">Os programas In Company são precedidos pelo AI Scan — leitura organizacional de maturidade + assessment individual de fluência — que calibra foco, agrupamentos e profundidade da jornada.</p>
+        </div>
+      </Card>
     </div>
+
   );
 }
 
@@ -590,6 +842,30 @@ function KPI({ label, value, sub, icon: Icon, accent }: { label: string; value: 
       </div>
       <p className="text-3xl font-bold">{value}</p>
       {sub && <p className="text-xs text-muted-foreground mt-1">{sub}</p>}
+    </Card>
+  );
+}
+
+function EcosystemStats() {
+  const stats = [
+    { v: "20+", l: "anos de experiência" },
+    { v: "3750+", l: "projetos realizados" },
+    { v: "250+", l: "colaboradores" },
+    { v: "30+", l: "setores atendidos" },
+    { v: "9", l: "empresas no ecossistema" },
+  ];
+  return (
+    <Card className="p-6 bg-card border-border">
+      <h3 className="text-lg font-bold mb-1">Lastro do ecossistema Matter</h3>
+      <p className="text-sm text-muted-foreground mb-5">Expertises complementares com tecnologia e estratégia para impulsionar o crescimento.</p>
+      <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
+        {stats.map((s) => (
+          <div key={s.l} className="p-4 rounded-xl bg-background/50 border border-border text-center">
+            <p className="text-2xl font-bold text-primary">{s.v}</p>
+            <p className="text-[11px] text-muted-foreground mt-1">{s.l}</p>
+          </div>
+        ))}
+      </div>
     </Card>
   );
 }
