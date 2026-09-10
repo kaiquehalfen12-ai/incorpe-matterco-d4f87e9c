@@ -27,7 +27,9 @@ export function SobreMatter() {
       <section className="relative overflow-hidden rounded-3xl border border-border bg-card p-10 md:p-16 grid-bg">
         <div className="absolute inset-0 bg-gradient-glow opacity-60 pointer-events-none" />
         <div className="relative max-w-4xl">
-          <img src={matterLogo} alt="Matter&Co." className="h-12 md:h-14 mb-10" />
+          <img src={matterLogo} alt="Matter&Co." className="h-12 md:h-14 mb-10 only-dark" />
+          <img src={matterLogoLight.url} alt="Matter&Co." className="h-12 md:h-14 mb-10 only-light" />
+
           <Badge className="bg-primary/10 text-primary border border-primary/30 hover:bg-primary/20 mb-6">
             Ecossistema Matter&Co.
           </Badge>
