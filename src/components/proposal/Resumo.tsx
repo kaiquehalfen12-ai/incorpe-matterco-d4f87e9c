@@ -14,6 +14,57 @@ const incorpeItems: Item[] = [
   { name: "Smart Pulse",               price: "BRL 3.000 /mês",         note: "Manutenção adicional do Smart Squad", optional: true },
 ];
 
+type OptionTotal = {
+  label: string;
+  title: string;
+  setupTotal: string;
+  setupItems: string[];
+  recurringTotal: string;
+  recurringItems: string[];
+  addOn?: string;
+  footnote: string;
+};
+
+const optionTotals: OptionTotal[] = [
+  {
+    label: "Opção A · Sob Demanda",
+    title: "AI Scan + Smart Squad",
+    setupTotal: "BRL 19.880",
+    setupItems: ["AI Scan — BRL 19.880 (diagnóstico inicial)"],
+    recurringTotal: "BRL 9.880 /mês",
+    recurringItems: ["Smart Squad — BRL 9.880/mês (contínuo, 1 área por mês)"],
+    addOn: "+ Smart Pulse (opcional): BRL 3.000/mês",
+    footnote: "AI Scan e Smart Squad começam simultaneamente no Mês 1. O Smart Squad continua enquanto o contrato estiver vigente.",
+  },
+  {
+    label: "Opção B-1 · Escopo completo",
+    title: "Matter Learn + AI Scan + Smart Route + Smart Code + Smart Squad",
+    setupTotal: "BRL 73.580",
+    setupItems: [
+      "AI Scan — BRL 0 (100% desconto com Route + Code)",
+      "Smart Route — BRL 28.880 (1 entrada + 4 parcelas)",
+      "Smart Code — BRL 30.000",
+      "Matter Learn · AI Shift — BRL 14.700 (15 pessoas)",
+    ],
+    recurringTotal: "BRL 13.630 /mês",
+    recurringItems: [
+      "Smart Squad — BRL 9.880/mês (contínuo, 1 área por mês)",
+      "Matter Learn · AI Next — BRL 3.750/mês (12 meses, 15 pessoas)",
+    ],
+    addOn: "+ Smart Pulse (opcional): BRL 3.000/mês",
+    footnote: "AI Scan, Smart Route, Smart Code, Smart Squad e Matter Learn começam simultaneamente no Mês 1. O AI Next segue ativo por 12 meses; o Smart Squad continua enquanto o contrato estiver vigente.",
+  },
+  {
+    label: "Opção B-2 · Matter Learn",
+    title: "Matter Learn (AI Shift + AI Next)",
+    setupTotal: "BRL 14.700",
+    setupItems: ["Matter Learn · AI Shift — BRL 14.700 (15 pessoas, 1 dia de imersão)"],
+    recurringTotal: "BRL 3.750 /mês",
+    recurringItems: ["Matter Learn · AI Next — BRL 3.750/mês (12 meses, 15 pessoas)"],
+    footnote: "AI Shift e AI Next começam simultaneamente no Mês 1. O AI Next segue ativo por 12 meses.",
+  },
+];
+
 export function Resumo() {
   const mandatory = incorpeItems.filter(i => !i.optional);
   const optional  = incorpeItems.filter(i => i.optional);
@@ -110,37 +161,38 @@ export function Resumo() {
         </Card>
       </div>
 
-      {/* Total investment */}
-      <Card className="p-7 md:p-10 bg-card border-border">
-        <div className="flex items-center gap-2 mb-6">
+      {/* Total investment per option */}
+      <div className="space-y-6">
+        <div className="flex items-center gap-2">
           <DollarSign className="w-4 h-4 text-primary" />
-          <h3 className="font-bold uppercase tracking-wider text-xs">Valor total do projeto — Opção B-1 (escopo completo)</h3>
+          <h3 className="font-bold uppercase tracking-wider text-xs">Valor total do projeto — por opção</h3>
         </div>
-        <div className="grid md:grid-cols-2 gap-6">
-          <div className="p-6 rounded-2xl bg-gradient-gold text-primary-foreground">
-            <p className="text-xs uppercase tracking-wider opacity-80 mb-1">Investimento único (setup)</p>
-            <p className="text-3xl md:text-4xl font-bold mb-3">BRL 73.580</p>
-            <ul className="space-y-1 text-sm opacity-90">
-              <li>AI Scan — BRL 0 (100% desconto com Route + Code)</li>
-              <li>Smart Route — BRL 28.880 (1 entrada + 4 parcelas)</li>
-              <li>Smart Code — BRL 30.000</li>
-              <li>Matter Learn · AI Shift — BRL 14.700 (15 pessoas)</li>
-            </ul>
-          </div>
-          <div className="p-6 rounded-2xl bg-background/50 border border-border">
-            <p className="text-xs uppercase tracking-wider text-muted-foreground mb-1">Investimento recorrente (mensal)</p>
-            <p className="text-3xl md:text-4xl font-bold text-gradient-gold mb-3">BRL 13.630 /mês</p>
-            <ul className="space-y-1 text-sm text-muted-foreground">
-              <li>Smart Squad — BRL 9.880/mês (contínuo, 1 área por mês)</li>
-              <li>Matter Learn · AI Next — BRL 3.750/mês (12 meses, 15 pessoas)</li>
-            </ul>
-            <p className="text-xs text-muted-foreground mt-3 pt-3 border-t border-border">+ Smart Pulse (opcional): BRL 3.000/mês</p>
-          </div>
-        </div>
-        <p className="text-xs text-muted-foreground mt-6">
-          AI Scan, Smart Route, Smart Code, Smart Squad e Matter Learn começam simultaneamente no Mês 1. O AI Next segue ativo por 12 meses; o Smart Squad continua enquanto o contrato estiver vigente.
-        </p>
-      </Card>
+
+        {optionTotals.map((opt) => (
+          <Card key={opt.label} className="p-7 md:p-10 bg-card border-border">
+            <p className="text-xs text-primary font-mono uppercase tracking-widest mb-1">{opt.label}</p>
+            <h4 className="text-lg font-bold mb-6">{opt.title}</h4>
+            <div className="grid md:grid-cols-2 gap-6">
+              <div className="p-6 rounded-2xl bg-gradient-gold text-primary-foreground">
+                <p className="text-xs uppercase tracking-wider opacity-80 mb-1">Investimento único (setup)</p>
+                <p className="text-3xl md:text-4xl font-bold mb-3">{opt.setupTotal}</p>
+                <ul className="space-y-1 text-sm opacity-90">
+                  {opt.setupItems.map((i) => <li key={i}>{i}</li>)}
+                </ul>
+              </div>
+              <div className="p-6 rounded-2xl bg-background/50 border border-border">
+                <p className="text-xs uppercase tracking-wider text-muted-foreground mb-1">Investimento recorrente (mensal)</p>
+                <p className="text-3xl md:text-4xl font-bold text-gradient-gold mb-3">{opt.recurringTotal}</p>
+                <ul className="space-y-1 text-sm text-muted-foreground">
+                  {opt.recurringItems.map((i) => <li key={i}>{i}</li>)}
+                </ul>
+                {opt.addOn && <p className="text-xs text-muted-foreground mt-3 pt-3 border-t border-border">{opt.addOn}</p>}
+              </div>
+            </div>
+            <p className="text-xs text-muted-foreground mt-6">{opt.footnote}</p>
+          </Card>
+        ))}
+      </div>
 
       {/* Bottom highlight card */}
       <Card className="p-8 md:p-12 bg-gradient-gold text-primary-foreground border-0 shadow-gold">

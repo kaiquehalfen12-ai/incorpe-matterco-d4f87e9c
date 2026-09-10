@@ -411,7 +411,7 @@ export function PropostaIncorpe() {
               <ProjectTimeline
                 totalMonths={12}
                 tracks={[
-                  { name: "Matter Learn · AI Shift", months: 1, note: "8 horas de imersão" },
+                  { name: "Matter Learn · AI Shift", months: 1, note: "1 dia · 8 horas de imersão" },
                   { name: "AI Scan", months: 1, note: "4 semanas" },
                   { name: "Smart Route", months: 4, note: "Fundação estratégica" },
                   { name: "Smart Code", months: 4, note: "Tecnologia e automação" },
@@ -428,7 +428,7 @@ export function PropostaIncorpe() {
               <ProjectTimeline
                 totalMonths={12}
                 tracks={[
-                  { name: "Matter Learn · AI Shift", months: 1, note: "8 horas de imersão" },
+                  { name: "Matter Learn · AI Shift", months: 1, note: "1 dia · 8 horas de imersão" },
                   { name: "Matter Learn · AI Next", months: 12, note: "Formação contínua por faixas" },
                 ]}
               />
