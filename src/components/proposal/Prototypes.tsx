@@ -660,12 +660,12 @@ export function MatterAcademyPrototype() {
         <h3 className="text-lg font-bold mb-6">Jornada AI Next — 4 faixas progressivas</h3>
         <div className="grid md:grid-cols-4 gap-3">
           {belts.map((b, i) => (
-            <div key={b.name} className="relative p-5 rounded-2xl border border-border bg-background/50 hover:border-primary/40 transition-colors">
+            <div key={b.name} className="relative flex flex-col p-5 rounded-2xl border border-border bg-background/50 hover:border-primary/40 transition-colors">
               <div className={`w-10 h-2 rounded-full mb-4 ${b.color}`} />
               <p className="text-xs text-muted-foreground font-mono uppercase tracking-wider mb-1">Etapa 0{i+1}</p>
               <h4 className="font-bold text-lg">{b.name}</h4>
-              <p className="text-xs text-muted-foreground mt-2 mb-3 leading-relaxed">{b.desc}</p>
-              <Badge variant="outline" className="text-xs mb-3">{b.weeks}</Badge>
+              <p className="text-xs text-muted-foreground mt-2 mb-3 leading-relaxed flex-1">{b.desc}</p>
+              <Badge variant="outline" className="text-xs mb-3 self-start">{b.weeks}</Badge>
               <div>
                 <div className="flex justify-between text-xs mb-1">
                   <span className="text-muted-foreground">Engajamento médio</span>
