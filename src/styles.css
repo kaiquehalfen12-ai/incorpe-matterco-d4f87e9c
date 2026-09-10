@@ -154,4 +154,11 @@
       linear-gradient(90deg, oklch(0.22 0.008 80 / 0.4) 1px, transparent 1px);
     background-size: 48px 48px;
   }
+  .light .grid-bg {
+    background-image: none;
+  }
+  .light .only-dark { display: none; }
+  .only-light { display: none; }
+  .light .only-light { display: block; }
+
 }
