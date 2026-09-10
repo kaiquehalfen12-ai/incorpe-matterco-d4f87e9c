@@ -266,7 +266,7 @@ const academy = [
     sub: "Formação Contínua",
     icon: BookOpen,
     time: "12 meses · 3 meses por faixa",
-    price: "BRL 250 /pessoa/mês",
+    price: "BRL 250 /pessoa-mês",
     priceNote: `${PARTICIPANTS} colaboradores · BRL 3.750 /mês`,
     desc: "Jornada Faixa Branca → Verde → Marrom → Preta. Metodologia TD Matter para construção de cultura de IA.",
     items: ["Jornada por faixas (Branca → Preta)", "Treinamento contínuo (Metodologia TD Matter)", "Construção de cultura IA", "Formação prática em ferramentas de IA", "Certificação Matter Academy"],
