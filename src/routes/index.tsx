@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import matterLogo from "@/assets/matter-logo.png";
 import { SobreMatter } from "@/components/proposal/SobreMatter";
 import { ClienteIncorpe } from "@/components/proposal/Cliente";
@@ -9,7 +9,7 @@ import {
   SmartRoutePrototype, SmartCodePrototype, SmartSquadPrototype,
   MatterAcademyPrototype,
 } from "@/components/proposal/Prototypes";
-import { Menu, X, ChevronRight } from "lucide-react";
+import { Menu, X, ChevronRight, Moon, Sun } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/")({
@@ -17,6 +17,10 @@ export const Route = createFileRoute("/")({
     meta: [
       { title: "Matter&Co. · Proposta INCORPE" },
       { name: "description", content: "Proposta estratégica Matter&Co. para INCORPE — eficiência operacional, tecnologia, escala e inteligência empresarial." },
+      { property: "og:title", content: "Matter&Co. · Proposta INCORPE" },
+      { property: "og:description", content: "Proposta estratégica Matter&Co. para INCORPE — eficiência operacional, tecnologia, escala e inteligência empresarial." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
     ],
   }),
   component: Index,
@@ -40,6 +44,12 @@ const tabs: { id: TabId; label: string; group: string }[] = [
 function Index() {
   const [active, setActive] = useState<TabId>("sobre");
   const [navOpen, setNavOpen] = useState(false);
+  const [theme, setTheme] = useState<"dark" | "light">("dark");
+
+  useEffect(() => {
+    const savedTheme = window.localStorage.getItem("proposal-theme");
+    if (savedTheme === "light") setTheme("light");
+  }, []);
 
   const groups = Array.from(new Set(tabs.map(t => t.group)));
 
@@ -49,8 +59,14 @@ function Index() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  const toggleTheme = () => {
+    const nextTheme = theme === "dark" ? "light" : "dark";
+    setTheme(nextTheme);
+    window.localStorage.setItem("proposal-theme", nextTheme);
+  };
+
   return (
-    <div className="flex min-h-screen">
+    <div className={`${theme} flex min-h-screen bg-background text-foreground`}>
       {/* Mobile backdrop */}
       {navOpen && (
         <div
@@ -61,8 +77,7 @@ function Index() {
 
       {/* Sidebar */}
       <aside
-        className={`fixed inset-y-0 left-0 z-50 w-64 flex flex-col border-r border-border backdrop-blur-xl transition-transform duration-300 ease-in-out ${navOpen ? "translate-x-0" : "-translate-x-full"} lg:translate-x-0`}
-        style={{ background: "oklch(0.10 0.008 80 / 0.97)" }}
+        className={`proposal-sidebar fixed inset-y-0 left-0 z-50 w-64 flex flex-col border-r backdrop-blur-xl transition-transform duration-300 ease-in-out ${navOpen ? "translate-x-0" : "-translate-x-full"} lg:translate-x-0`}
       >
         {/* Logo */}
         <div className="p-5 border-b border-border shrink-0">
@@ -99,7 +114,17 @@ function Index() {
 
         {/* Sidebar footer */}
         <div className="p-4 border-t border-border shrink-0">
-          <p className="text-[10px] text-muted-foreground font-mono">Proposta · 21.05.2026</p>
+          <Button
+            variant="ghost"
+            className="mb-3 w-full justify-start gap-2"
+            onClick={toggleTheme}
+            aria-label={theme === "dark" ? "Ativar tema claro" : "Ativar tema escuro"}
+            title={theme === "dark" ? "Ativar tema claro" : "Ativar tema escuro"}
+          >
+            {theme === "dark" ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+            {theme === "dark" ? "Tema claro" : "Tema escuro"}
+          </Button>
+          <p className="text-[10px] text-muted-foreground font-mono">Proposta · 10.09.2026</p>
           <p className="text-[10px] text-muted-foreground font-mono mt-0.5 opacity-60">© 2026 Matter&Co.</p>
         </div>
       </aside>
@@ -115,15 +140,27 @@ function Index() {
                 {tabs.find(t => t.id === active)?.label}
               </span>
             </div>
-            <Button
-              variant="ghost"
-              size="icon"
-              className="shrink-0"
-              onClick={() => setNavOpen(!navOpen)}
-              aria-label="Menu"
-            >
-              {navOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-            </Button>
+            <div className="flex items-center gap-1">
+              <Button
+                variant="ghost"
+                size="icon"
+                className="shrink-0"
+                onClick={toggleTheme}
+                aria-label={theme === "dark" ? "Ativar tema claro" : "Ativar tema escuro"}
+                title={theme === "dark" ? "Ativar tema claro" : "Ativar tema escuro"}
+              >
+                {theme === "dark" ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+              </Button>
+              <Button
+                variant="ghost"
+                size="icon"
+                className="shrink-0"
+                onClick={() => setNavOpen(!navOpen)}
+                aria-label="Menu"
+              >
+                {navOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              </Button>
+            </div>
           </div>
         </header>
 
@@ -144,7 +181,7 @@ function Index() {
               <img src={matterLogo} alt="Matter&Co." className="h-6 opacity-70" />
               <span className="text-xs text-muted-foreground">© 2026 Matter&Co. — Inteligência de negócios.</span>
             </div>
-            <span className="text-xs text-muted-foreground font-mono">Proposta 21.05.2026</span>
+            <span className="text-xs text-muted-foreground font-mono">Proposta 10.09.2026</span>
           </div>
         </footer>
       </div>

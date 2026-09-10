@@ -1,6 +1,5 @@
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import incorpeLogo from "@/assets/incorpe-logo.png";
 import { DollarSign, Clock, Layers, Sparkles } from "lucide-react";
 
 type Item = { name: string; price: string; note?: string; optional?: boolean };
@@ -25,14 +24,12 @@ export function Resumo() {
       <section className="rounded-3xl border border-border bg-card p-8 md:p-14 relative overflow-hidden">
         <div className="absolute inset-0 grid-bg opacity-30" />
         <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full bg-primary/20 blur-3xl" />
-        <div className="relative flex flex-col md:flex-row gap-6 items-center md:items-start">
-          <div className="w-20 h-20 rounded-2xl bg-white p-2 flex items-center justify-center shrink-0">
-            <img src={incorpeLogo} alt="INCORPE" className="max-w-full max-h-full object-contain" />
-          </div>
-          <div className="text-center md:text-left">
+        <div className="relative">
+          <div>
             <Badge className="bg-primary text-primary-foreground mb-4">Resumo Estratégico</Badge>
-            <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-4">
-              Proposta <span className="text-gradient-gold">INCORPE</span>
+            <h1 className="flex flex-wrap items-baseline gap-x-3 text-4xl md:text-5xl font-bold leading-tight mb-4">
+              <span>Proposta</span>
+              <span className="text-gradient-gold">INCORPE</span>
             </h1>
             <p className="text-muted-foreground text-lg max-w-2xl">
               Eficiência operacional, tecnologia, escala e inteligência empresarial — construída para a próxima década do grupo.

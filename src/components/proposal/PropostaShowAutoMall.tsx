@@ -1,6 +1,5 @@
 import { ProposalHeader } from "./ProposalHeader";
 import { ModuleCard, type Module } from "./ModuleCard";
-import samLogo from "@/assets/showautomall-logo.png";
 import { Compass, Palette, Cpu, Rocket } from "lucide-react";
 
 const modules: Module[] = [
@@ -119,7 +118,6 @@ export function PropostaShowAutoMall() {
         eyebrow="Proposta Show Auto Mall"
         title="Show Auto Mall BH"
         subtitle="Branding, growth, CRM e inteligência comercial — para consolidar o principal polo automotivo da região."
-        logo={samLogo}
         accent="danger"
       />
 

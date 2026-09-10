@@ -91,7 +91,33 @@
   --shadow-elegant: 0 30px 80px -30px oklch(0 0 0 / 0.6);
 }
 
-.dark { /* same as root — site is dark-only */ }
+.dark { /* inherits the dark Matter palette from :root */ }
+
+.light {
+  --background: oklch(0.97 0.008 95);
+  --foreground: oklch(0.16 0.01 80);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.16 0.01 80);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.16 0.01 80);
+  --secondary: oklch(0.92 0.01 90);
+  --secondary-foreground: oklch(0.16 0.01 80);
+  --muted: oklch(0.93 0.008 90);
+  --muted-foreground: oklch(0.46 0.02 80);
+  --border: oklch(0.84 0.015 90);
+  --input: oklch(0.84 0.015 90);
+  --gradient-dark: linear-gradient(180deg, oklch(0.98 0.006 95), oklch(0.93 0.01 90));
+  --gradient-glow: radial-gradient(circle at 50% 0%, oklch(0.86 0.18 95 / 0.16), transparent 60%);
+}
+
+.proposal-sidebar {
+  background: oklch(0.10 0.008 80 / 0.98);
+  color: oklch(0.97 0.01 90);
+  border-color: oklch(0.24 0.008 80);
+  --foreground: oklch(0.97 0.01 90);
+  --muted-foreground: oklch(0.68 0.02 85);
+  --border: oklch(0.24 0.008 80);
+}
 
 @layer base {
   * { border-color: var(--color-border); }
