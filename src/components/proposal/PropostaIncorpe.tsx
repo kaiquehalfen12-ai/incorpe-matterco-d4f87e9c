@@ -236,7 +236,7 @@ function ProjectTimeline({ tracks, totalMonths }: { tracks: TimelineTrack[]; tot
               />
             </div>
             <span className="sm:w-24 shrink-0 sm:text-right text-xs text-muted-foreground font-mono">
-              {t.months} {t.months === 1 ? "mês" : "meses"}
+              {t.months} {t.months === 1 ? "dia" : "meses"}
             </span>
           </div>
         ))}
