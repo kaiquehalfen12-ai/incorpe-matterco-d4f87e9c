@@ -32,7 +32,7 @@ type TabId =
 
 const tabs: { id: TabId; label: string; group: string }[] = [
   { id: "sobre",           label: "Sobre a Matter",    group: "Institucional"   },
-  { id: "cliente-incorpe", label: "INCORPE",            group: "Cliente"         },
+  { id: "cliente-incorpe", label: "Incorpe",            group: "Cliente"         },
   { id: "incorpe",         label: "Proposta",           group: "Proposta"        },
   { id: "resumo",          label: "Resumo Estratégico", group: "Proposta"        },
   { id: "p-route",         label: "Smart Route",        group: "Produtos Matter" },
