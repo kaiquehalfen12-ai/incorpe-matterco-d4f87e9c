@@ -1,11 +1,17 @@
+import { useState } from "react";
 import { ProposalHeader } from "./ProposalHeader";
 import { ModuleCard, type Module } from "./ModuleCard";
 import { Card } from "@/components/ui/card";
-import { Compass, Cpu, Users, GraduationCap, Calendar, Gift, Zap, Crown, BookOpen, Scan } from "lucide-react";
+import {
+  Compass, Cpu, Users, GraduationCap, Calendar, Zap, BookOpen, Scan,
+  Building2, Wallet, Calculator, ShoppingCart, HardHat, BellRing, FileSpreadsheet,
+  CalendarClock, CheckCircle2,
+} from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 
-const modules: Module[] = [
-  {
-    number: "01",
+function aiScanModule(number: string): Module {
+  return {
+    number,
     name: "AI Scan",
     subtitle: "Escaneamento de Maturidade em IA",
     icon: Scan,
@@ -27,8 +33,11 @@ const modules: Module[] = [
     investment: "BRL 19.880",
     investmentNote: "100% de desconto ao contratar Smart Route ou Smart Code",
     badge: "Diagnóstico",
-  },
-  {
+  };
+}
+
+function smartRouteModule(): Module {
+  return {
     number: "02",
     name: "Smart Route",
     subtitle: "Plano Estratégico de Escala e Eficiência",
@@ -62,8 +71,11 @@ const modules: Module[] = [
     investmentNote: "Entrada + 4 parcelas mensais",
     badge: "Fundação",
     highlight: true,
-  },
-  {
+  };
+}
+
+function smartCodeModule(): Module {
+  return {
     number: "03",
     name: "Smart Code",
     subtitle: "Núcleo de Tecnologia, IA e Automação",
@@ -92,13 +104,16 @@ const modules: Module[] = [
     ],
     duration: "4 meses",
     investment: "BRL 30.000",
-  },
-  {
-    number: "04",
+  };
+}
+
+function smartSquadModule(number: string): Module {
+  return {
+    number,
     name: "Smart Squad",
     subtitle: "Evolução contínua e Operação de Inteligência",
     icon: Users,
-    description: "Depois da implantação do Smart Route e Smart Code, é preciso uma evolução contínua. É aqui que entra o Squad mensal — um time dedicado de IA aplicada operando junto à Incorpe.",
+    description: "Time dedicado de IA aplicada operando por área da Incorpe — uma frente operacional por mês, com agentes, automações e mapeamento de evolução para cada setor.",
     objective: [
       "Evoluir sistemas",
       "Desenvolver melhorias",
@@ -110,19 +125,90 @@ const modules: Module[] = [
     ],
     deliverables: [
       "Squad contínuo — Time dedicado de IA aplicada",
-      "Sustentação tecnológica — Evolução do Smart Code",
-      "Novos casos de uso de IA",
+      "Sustentação tecnológica",
+      "Novos casos de uso de IA por área",
       "Consultoria estratégica recorrente ao CTO e liderança",
       "Aceleração de IA — Replicação por novas áreas",
       "Pilotos de inovação contínuos",
     ],
-    duration: "A medida que o Smart Code for entregue",
+    duration: "7 meses — 1 área por mês",
     investment: "BRL 9.880 /mês",
     optionalAddons: [
       { name: "Smart Pulse", value: "BRL 3.000 /mês" },
     ],
+  };
+}
+
+const squadStages: { month: number; area: string; icon: LucideIcon; items: string[] }[] = [
+  {
+    month: 1, area: "Engenharia", icon: Building2,
+    items: ["Propostas", "Projetos", "Aprovações", "Conferências", "Mapeamento de desenvolvimento do setor"],
+  },
+  {
+    month: 2, area: "Financeiro", icon: Wallet,
+    items: ["Controle de fluxo de caixa", "Controle de IPTUs", "Agentes para tarefas repetitivas", "Mapeamento de desenvolvimento do setor"],
+  },
+  {
+    month: 3, area: "Contabilidade", icon: Calculator,
+    items: ["Consolidação automática de dados", "Agentes para tarefas repetitivas", "Mapeamento de desenvolvimento do setor"],
+  },
+  {
+    month: 4, area: "Compras", icon: ShoppingCart,
+    items: ["Mapas de cotações automáticos", "Solicitações e compras automáticas", "Mapeamento de desenvolvimento do setor", "Agentes para tarefas repetitivas"],
+  },
+  {
+    month: 5, area: "Obras", icon: HardHat,
+    items: ["Automação de cronogramas", "Pedidos automáticos conforme avanço de obra", "Agentes para tarefas repetitivas"],
+  },
+  {
+    month: 6, area: "Cobrança", icon: BellRing,
+    items: ["Relatórios", "Controle de notificações", "Automação de notificações", "Automação de distratos", "Agentes para tarefas repetitivas"],
+  },
+  {
+    month: 7, area: "Orçamento", icon: FileSpreadsheet,
+    items: ["Elaboração prévia automática conforme projetos", "Apropriação automática", "Relatórios de conferência e desvios"],
   },
 ];
+
+function SquadStagesTimeline() {
+  return (
+    <Card className="p-6 md:p-8 bg-card border-border">
+      <div className="flex items-center gap-3 mb-6">
+        <div className="w-10 h-10 rounded-xl bg-primary/10 border border-primary/30 flex items-center justify-center shrink-0">
+          <CalendarClock className="w-5 h-5 text-primary" />
+        </div>
+        <div>
+          <h3 className="text-xl font-bold">Smart Squad — roadmap por área</h3>
+          <p className="text-xs text-muted-foreground">Uma frente operacional por mês, com agentes de IA e automações dedicadas a cada setor.</p>
+        </div>
+      </div>
+      <div className="space-y-3">
+        {squadStages.map((s) => (
+          <div key={s.month} className="flex flex-col sm:flex-row sm:items-start gap-4 p-4 rounded-2xl bg-background/50 border border-border">
+            <div className="flex items-center gap-3 sm:w-44 shrink-0">
+              <div className="w-10 h-10 rounded-xl bg-primary/10 border border-primary/30 flex items-center justify-center shrink-0">
+                <s.icon className="w-5 h-5 text-primary" />
+              </div>
+              <div>
+                <p className="text-[10px] text-muted-foreground font-mono uppercase tracking-widest">Mês {s.month}</p>
+                <p className="font-bold text-sm">{s.area}</p>
+              </div>
+            </div>
+            <ul className="flex-1 grid sm:grid-cols-2 gap-x-4 gap-y-1.5">
+              {s.items.map((i) => (
+                <li key={i} className="text-xs text-muted-foreground flex gap-2">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-primary shrink-0 mt-0.5" />{i}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </Card>
+  );
+}
+
+const PARTICIPANTS = 15;
 
 const academy = [
   {
@@ -131,9 +217,9 @@ const academy = [
     icon: Zap,
     time: "8 horas de imersão",
     price: "BRL 980 /pessoa",
-    priceNote: "20 colaboradores · Total BRL 19.600 (de BRL 1.500)",
+    priceNote: `${PARTICIPANTS} colaboradores · Total BRL 14.700 (de BRL 1.500)`,
     desc: "Programa de formação acessível em IA aplicada ao trabalho e negócios, para profissionais e empresas em transição digital.",
-    items: ["Imersão para mínimo 20 participantes", "Estratégia de transformação digital", "Framework de aplicações contextualizado", "Plano de aplicação da IA na organização"],
+    items: ["Imersão para mínimo 15 participantes", "Estratégia de transformação digital", "Framework de aplicações contextualizado", "Plano de aplicação da IA na organização"],
   },
   {
     name: "AI Next",
@@ -141,77 +227,148 @@ const academy = [
     icon: BookOpen,
     time: "12 meses · 3 meses por faixa",
     price: "BRL 250 /pessoa/mês",
-    priceNote: "20 colaboradores · BRL 5.000 /mês",
+    priceNote: `${PARTICIPANTS} colaboradores · BRL 3.750 /mês`,
     desc: "Jornada Faixa Branca → Verde → Marrom → Preta. Metodologia TD Matter para construção de cultura de IA.",
     items: ["Jornada por faixas (Branca → Preta)", "Treinamento contínuo (Metodologia TD Matter)", "Construção de cultura IA", "Formação prática em ferramentas de IA", "Certificação Matter Academy"],
   },
 ];
 
+function MatterLearnCard({ moduleNumber }: { moduleNumber?: string }) {
+  return (
+    <Card className="bg-card border-border p-8 md:p-10">
+      <div className="flex items-start gap-5 mb-8">
+        <div className="w-14 h-14 rounded-2xl bg-primary text-primary-foreground flex items-center justify-center shrink-0 shadow-gold">
+          <GraduationCap className="w-7 h-7" />
+        </div>
+        <div>
+          {moduleNumber && <p className="text-xs text-primary font-mono uppercase tracking-widest mb-1">MÓDULO {moduleNumber}</p>}
+          <h3 className="text-2xl md:text-3xl font-bold">Matter Learn — Capacitação</h3>
+          <p className="text-muted-foreground mt-1">Tirar o medo → Gerar linguagem comum → Destravar decisões</p>
+        </div>
+      </div>
+      <p className="text-foreground/80 mb-8 leading-relaxed">
+        Programas premium para líderes e equipes, focados no domínio da IA aplicada à estratégia e ao negócio — dimensionados para {PARTICIPANTS} pessoas.
+      </p>
+      <div className="grid md:grid-cols-2 gap-5">
+        {academy.map((a) => (
+          <div key={a.name} className="p-6 rounded-2xl border border-border bg-background/40 hover:border-primary/40 transition-colors">
+            <div className="flex items-center justify-between mb-4">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-xl bg-primary/10 border border-primary/30 flex items-center justify-center">
+                  <a.icon className="w-5 h-5 text-primary" />
+                </div>
+                <div>
+                  <h4 className="font-bold text-lg leading-tight">{a.name}</h4>
+                  <p className="text-xs text-muted-foreground">{a.sub}</p>
+                </div>
+              </div>
+              <div className="text-right">
+                <p className="font-bold text-primary">{a.price}</p>
+                {a.priceNote && <p className="text-[11px] text-muted-foreground">{a.priceNote}</p>}
+              </div>
+            </div>
+            <p className="text-sm text-muted-foreground mb-4">{a.desc}</p>
+            <ul className="space-y-1.5 mb-4">
+              {a.items.map((i) => (
+                <li key={i} className="text-xs text-muted-foreground flex gap-2">
+                  <span className="text-primary">▸</span>{i}
+                </li>
+              ))}
+            </ul>
+            <div className="text-xs text-muted-foreground pt-3 border-t border-border flex items-center gap-2">
+              <Calendar className="w-3 h-3" /> {a.time}
+            </div>
+          </div>
+        ))}
+      </div>
+    </Card>
+  );
+}
 
+function OptionToggle<T extends string>({
+  options, value, onChange,
+}: { options: { id: T; label: string }[]; value: T; onChange: (v: T) => void }) {
+  return (
+    <div className="inline-flex flex-wrap gap-1.5 p-1.5 rounded-full bg-card border border-border">
+      {options.map((o) => (
+        <button
+          key={o.id}
+          onClick={() => onChange(o.id)}
+          className={`px-5 py-2.5 rounded-full text-sm font-semibold transition-colors ${
+            value === o.id
+              ? "bg-primary text-primary-foreground shadow-gold"
+              : "text-muted-foreground hover:text-foreground"
+          }`}
+        >
+          {o.label}
+        </button>
+      ))}
+    </div>
+  );
+}
+
+type MainOption = "A" | "B";
+type SubOption = "B1" | "B2";
 
 export function PropostaIncorpe() {
+  const [option, setOption] = useState<MainOption>("A");
+  const [subOption, setSubOption] = useState<SubOption>("B1");
+
   return (
-    <div className="space-y-12">
+    <div className="space-y-10">
       <ProposalHeader
         eyebrow="Proposta Incorpe"
         title="INCORPE"
         subtitle="Eficiência operacional, tecnologia, escala e inteligência empresarial para a próxima década do grupo."
       />
 
-      {/* Modules */}
-      <div className="space-y-6">
-        {modules.map((m) => <ModuleCard key={m.number} m={m} />)}
+      <div className="space-y-3">
+        <p className="text-xs text-primary font-mono uppercase tracking-widest">Escolha o formato da proposta</p>
+        <OptionToggle
+          value={option}
+          onChange={setOption}
+          options={[
+            { id: "A", label: "Opção A · Sob Demanda" },
+            { id: "B", label: "Opção B · Visão do Roque" },
+          ]}
+        />
       </div>
 
-      {/* Academy module */}
-      <Card className="bg-card border-border p-8 md:p-10">
-        <div className="flex items-start gap-5 mb-8">
-          <div className="w-14 h-14 rounded-2xl bg-primary text-primary-foreground flex items-center justify-center shrink-0 shadow-gold">
-            <GraduationCap className="w-7 h-7" />
-          </div>
-          <div>
-            <p className="text-xs text-primary font-mono uppercase tracking-widest mb-1">MÓDULO 05</p>
-            <h3 className="text-2xl md:text-3xl font-bold">Matter Academy — Capacitação</h3>
-            <p className="text-muted-foreground mt-1">Tirar o medo → Gerar linguagem comum → Destravar decisões</p>
-          </div>
+      {option === "A" && (
+        <div className="space-y-6">
+          <ModuleCard m={aiScanModule("01")} />
+          <ModuleCard m={smartSquadModule("02")} />
+          <SquadStagesTimeline />
         </div>
-        <p className="text-foreground/80 mb-8 leading-relaxed">
-          Programas premium para líderes e equipes, focados no domínio da IA aplicada à estratégia e ao negócio.
-        </p>
-        <div className="grid md:grid-cols-2 gap-5">
-          {academy.map((a) => (
-            <div key={a.name} className="p-6 rounded-2xl border border-border bg-background/40 hover:border-primary/40 transition-colors">
-              <div className="flex items-center justify-between mb-4">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-primary/10 border border-primary/30 flex items-center justify-center">
-                    <a.icon className="w-5 h-5 text-primary" />
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-lg leading-tight">{a.name}</h4>
-                    <p className="text-xs text-muted-foreground">{a.sub}</p>
-                  </div>
-                </div>
-                <div className="text-right">
-                  <p className="font-bold text-primary">{a.price}</p>
-                  {a.priceNote && <p className="text-[11px] text-muted-foreground">{a.priceNote}</p>}
-                </div>
-              </div>
-              <p className="text-sm text-muted-foreground mb-4">{a.desc}</p>
-              <ul className="space-y-1.5 mb-4">
-                {a.items.map((i) => (
-                  <li key={i} className="text-xs text-muted-foreground flex gap-2">
-                    <span className="text-primary">▸</span>{i}
-                  </li>
-                ))}
-              </ul>
-              <div className="text-xs text-muted-foreground pt-3 border-t border-border flex items-center gap-2">
-                <Calendar className="w-3 h-3" /> {a.time}
-              </div>
-            </div>
-          ))}
-        </div>
-      </Card>
+      )}
 
+      {option === "B" && (
+        <div className="space-y-8">
+          <OptionToggle
+            value={subOption}
+            onChange={setSubOption}
+            options={[
+              { id: "B1", label: "Opção B-1 · Escopo completo" },
+              { id: "B2", label: "Opção B-2 · Matter Learn" },
+            ]}
+          />
+
+          {subOption === "B1" && (
+            <div className="space-y-6">
+              <ModuleCard m={aiScanModule("01")} />
+              <ModuleCard m={smartRouteModule()} />
+              <ModuleCard m={smartCodeModule()} />
+              <ModuleCard m={smartSquadModule("04")} />
+              <SquadStagesTimeline />
+              <MatterLearnCard moduleNumber="05" />
+            </div>
+          )}
+
+          {subOption === "B2" && (
+            <MatterLearnCard />
+          )}
+        </div>
+      )}
     </div>
   );
 }

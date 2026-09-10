@@ -531,7 +531,7 @@ export function MatterAcademyPrototype() {
       <div className="grid md:grid-cols-4 gap-4">
         <KPI label="Programas" value="3" sub="Scan · Shift · Next" icon={BookOpen} />
         <KPI label="Carga total (Next)" value="12m" sub="4 faixas progressivas" icon={Award} />
-        <KPI label="Mín. participantes" value="20" sub="Shift / Next" icon={Users} />
+        <KPI label="Mín. participantes" value="15" sub="Shift / Next" icon={Users} />
         <KPI label="Taxa de conclusão" value="88%" sub="média histórica" icon={Star} />
       </div>
 
@@ -606,8 +606,8 @@ export function MatterAcademyPrototype() {
           <div className="space-y-2">
             {[
               { p: "AI Scan", v: "BRL 19.880", n: "4 semanas · 100% desconto com Smart Route ou Smart Code" },
-              { p: "AI Shift", v: "BRL 980/pessoa", n: "20 part. = BRL 19.600" },
-              { p: "AI Next", v: "BRL 250/pessoa/mês", n: "20 part. = BRL 5.000/mês" },
+              { p: "AI Shift", v: "BRL 980/pessoa", n: "15 part. = BRL 14.700" },
+              { p: "AI Next", v: "BRL 250/pessoa/mês", n: "15 part. = BRL 3.750/mês" },
             ].map((i) => (
               <div key={i.p} className="flex items-center justify-between p-3 rounded-lg bg-background/50 border border-border">
                 <div>
@@ -819,6 +819,7 @@ function Hero({ icon: Icon, eyebrow, title, subtitle }: { icon: typeof Compass; 
     <section className="relative overflow-hidden rounded-3xl border border-border bg-card p-8 md:p-12">
       <div className="absolute inset-0 grid-bg opacity-30" />
       <div className="absolute -top-20 -right-20 w-72 h-72 rounded-full bg-primary/20 blur-3xl" />
+      <div className="absolute -bottom-16 -left-16 w-64 h-64 rounded-full bg-secondary/20 blur-3xl" />
       <div className="relative flex flex-col md:flex-row gap-6 items-start">
         <div className="w-16 h-16 rounded-2xl bg-primary text-primary-foreground flex items-center justify-center shrink-0 shadow-gold">
           <Icon className="w-8 h-8" />
