@@ -45,9 +45,6 @@ export function SobreMatter() {
             <div className="px-5 py-3 rounded-xl bg-primary text-primary-foreground font-semibold shadow-gold flex items-center gap-2">
               +100 empresas transformadas
             </div>
-            <div className="px-5 py-3 rounded-xl border border-border bg-background/50 font-medium">
-              Framework SHIFT
-            </div>
           </div>
         </div>
       </section>
