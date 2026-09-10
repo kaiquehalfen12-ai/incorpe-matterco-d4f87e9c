@@ -8,10 +8,10 @@ const incorpeItems: Item[] = [
   { name: "AI Scan",                   price: "BRL 19.880",             note: "Diagnóstico inicial · 100% desconto com Smart Route ou Smart Code" },
   { name: "Smart Route",               price: "1+4 de BRL 28.880",     note: "Fundação estratégica" },
   { name: "Smart Code",                price: "BRL 30.000",             note: "Tecnologia, IA & Automação" },
-  { name: "Smart Squad",               price: "BRL 9.880 /mês",         note: "Evolução contínua",   optional: true },
-  { name: "Smart Pulse",               price: "BRL 3.000 /mês",         note: "Manutenção",          optional: true },
-  { name: "Matter Academy · AI Shift", price: "BRL 980 /pessoa",        note: "20 part. = BRL 19.600" },
-  { name: "Matter Academy · AI Next",  price: "BRL 250 /pessoa-mês",    note: "20 part. = BRL 5.000/mês" },
+  { name: "Smart Squad",               price: "BRL 9.880 /mês",         note: "1 área por mês — Engenharia, Financeiro, Contabilidade, Compras, Obras, Cobrança, Orçamento" },
+  { name: "Matter Learn · AI Shift",   price: "BRL 980 /pessoa",        note: "15 part. = BRL 14.700" },
+  { name: "Matter Learn · AI Next",    price: "BRL 250 /pessoa-mês",    note: "15 part. = BRL 3.750/mês" },
+  { name: "Smart Pulse",               price: "BRL 3.000 /mês",         note: "Manutenção adicional do Smart Squad", optional: true },
 ];
 
 export function Resumo() {
@@ -45,7 +45,7 @@ export function Resumo() {
           <div>
             <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1">Módulos</p>
             <p className="text-3xl font-bold text-gradient-gold">5</p>
-            <p className="text-xs text-muted-foreground mt-1">AI Scan · Smart Route · Code · Squad · Academy</p>
+            <p className="text-xs text-muted-foreground mt-1">AI Scan · Smart Route · Code · Squad · Matter Learn</p>
           </div>
         </Card>
         <Card className="p-6 bg-card border-border flex items-start gap-3">
@@ -105,10 +105,42 @@ export function Resumo() {
             ))}
           </ul>
           <p className="text-xs text-muted-foreground mt-4 pt-4 border-t border-border">
-            Módulos ativados após entrega do Smart Code.
+            Smart Pulse é um reforço opcional de manutenção contínua do Smart Squad.
           </p>
         </Card>
       </div>
+
+      {/* Total investment */}
+      <Card className="p-7 md:p-10 bg-card border-border">
+        <div className="flex items-center gap-2 mb-6">
+          <DollarSign className="w-4 h-4 text-primary" />
+          <h3 className="font-bold uppercase tracking-wider text-xs">Valor total do projeto — Opção B-1 (escopo completo)</h3>
+        </div>
+        <div className="grid md:grid-cols-2 gap-6">
+          <div className="p-6 rounded-2xl bg-gradient-gold text-primary-foreground">
+            <p className="text-xs uppercase tracking-wider opacity-80 mb-1">Investimento único (setup)</p>
+            <p className="text-3xl md:text-4xl font-bold mb-3">BRL 73.580</p>
+            <ul className="space-y-1 text-sm opacity-90">
+              <li>AI Scan — BRL 0 (100% desconto com Route + Code)</li>
+              <li>Smart Route — BRL 28.880 (1 entrada + 4 parcelas)</li>
+              <li>Smart Code — BRL 30.000</li>
+              <li>Matter Learn · AI Shift — BRL 14.700 (15 pessoas)</li>
+            </ul>
+          </div>
+          <div className="p-6 rounded-2xl bg-background/50 border border-border">
+            <p className="text-xs uppercase tracking-wider text-muted-foreground mb-1">Investimento recorrente (mensal)</p>
+            <p className="text-3xl md:text-4xl font-bold text-gradient-gold mb-3">BRL 13.630 /mês</p>
+            <ul className="space-y-1 text-sm text-muted-foreground">
+              <li>Smart Squad — BRL 9.880/mês (contínuo, 1 área por mês)</li>
+              <li>Matter Learn · AI Next — BRL 3.750/mês (12 meses, 15 pessoas)</li>
+            </ul>
+            <p className="text-xs text-muted-foreground mt-3 pt-3 border-t border-border">+ Smart Pulse (opcional): BRL 3.000/mês</p>
+          </div>
+        </div>
+        <p className="text-xs text-muted-foreground mt-6">
+          AI Scan, Smart Route, Smart Code, Smart Squad e Matter Learn começam simultaneamente no Mês 1. O AI Next segue ativo por 12 meses; o Smart Squad continua enquanto o contrato estiver vigente.
+        </p>
+      </Card>
 
       {/* Bottom highlight card */}
       <Card className="p-8 md:p-12 bg-gradient-gold text-primary-foreground border-0 shadow-gold">

@@ -8,8 +8,9 @@ import {
   GraduationCap, Award, BookOpen,
   Layers, DollarSign,
   Info, Clock, RefreshCw, Building2, Flame, LayoutDashboard,
-  LineChart, Star,
+  LineChart, Star, Wallet, Calculator, ShoppingCart, HardHat, BellRing, FileSpreadsheet, ArrowRight,
 } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 
 function IllustrativeNote() {
   return (
@@ -241,6 +242,63 @@ export function SmartCodePrototype() {
 
       <IllustrativeNote />
 
+      {/* App view */}
+      <Card className="p-6 bg-card border-border">
+        <h3 className="text-lg font-bold mb-1 flex items-center gap-2"><LayoutDashboard className="w-4 h-4 text-primary" />Visão do aplicativo</h3>
+        <p className="text-sm text-muted-foreground mb-5">Aplicativo de gestão exclusivo da Incorpe — todas as integrações e automações reunidas em um só lugar.</p>
+        <div className="rounded-2xl overflow-hidden border border-border bg-background">
+          <div className="flex items-center gap-2 px-4 py-3 border-b border-border bg-card">
+            <span className="w-2.5 h-2.5 rounded-full bg-destructive/60" />
+            <span className="w-2.5 h-2.5 rounded-full bg-primary/60" />
+            <span className="w-2.5 h-2.5 rounded-full bg-green-500/60" />
+            <div className="flex-1 flex justify-center">
+              <div className="px-4 py-1 rounded-full bg-background/60 border border-border text-[10px] text-muted-foreground font-mono">app.incorpe.smartcode.com.br</div>
+            </div>
+          </div>
+          <div className="flex">
+            <div className="w-40 shrink-0 border-r border-border p-4 hidden sm:block">
+              <div className="flex items-center gap-2 mb-5">
+                <div className="w-6 h-6 rounded-lg bg-primary shrink-0" />
+                <span className="text-xs font-bold">Smart Code</span>
+              </div>
+              <div className="space-y-1">
+                {["Visão geral", "Vendas", "Obras", "Financeiro", "Cobrança", "Painéis IA"].map((item, i) => (
+                  <div key={item} className={`px-3 py-2 rounded-lg text-[11px] font-medium ${i === 0 ? "bg-primary text-primary-foreground shadow-gold" : "text-muted-foreground"}`}>{item}</div>
+                ))}
+              </div>
+            </div>
+            <div className="flex-1 p-4 space-y-3">
+              <div className="grid grid-cols-3 gap-2">
+                {[
+                  { l: "Vendas", v: "BRL 4.8M" },
+                  { l: "Obras ativas", v: "12" },
+                  { l: "Inadimplência", v: "4.1%" },
+                ].map((k) => (
+                  <div key={k.l} className="p-3 rounded-xl bg-background/50 border border-border">
+                    <p className="text-[9px] text-muted-foreground uppercase tracking-wider">{k.l}</p>
+                    <p className="text-sm font-bold">{k.v}</p>
+                  </div>
+                ))}
+              </div>
+              <div className="p-3 rounded-xl bg-background/50 border border-border h-20 flex items-end gap-1.5">
+                {[40, 65, 50, 80, 55, 90, 70, 60].map((h, i) => (
+                  <div key={i} className="flex-1 rounded-t bg-gradient-gold" style={{ height: `${h}%` }} />
+                ))}
+              </div>
+              <div className="space-y-1.5">
+                {["Boleto inadimplente → WhatsApp enviado", "Distrato → alerta CRM criado", "Relatório executivo gerado"].map((t) => (
+                  <div key={t} className="flex items-center gap-2 p-2 rounded-lg bg-background/40 border border-border">
+                    <span className="w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
+                    <span className="text-[10px] text-muted-foreground">{t}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+        <IllustrativeNote />
+      </Card>
+
       <div className="grid lg:grid-cols-3 gap-6">
         <Card className="lg:col-span-2 p-6 bg-card border-border">
           <div className="flex items-center justify-between mb-6">
@@ -384,6 +442,16 @@ export function SmartSquadPrototype() {
     { sprint: "Sprint 14", tickets: 38 },
   ];
 
+  const squadStages: { month: number; area: string; icon: LucideIcon; items: string[] }[] = [
+    { month: 1, area: "Engenharia", icon: Building2, items: ["Propostas", "Projetos", "Aprovações", "Conferências", "Mapeamento de desenvolvimento do setor"] },
+    { month: 2, area: "Financeiro", icon: Wallet, items: ["Controle de fluxo de caixa", "Controle de IPTUs", "Agentes para tarefas repetitivas", "Mapeamento de desenvolvimento do setor"] },
+    { month: 3, area: "Contabilidade", icon: Calculator, items: ["Consolidação automática de dados", "Agentes para tarefas repetitivas", "Mapeamento de desenvolvimento do setor"] },
+    { month: 4, area: "Compras", icon: ShoppingCart, items: ["Mapas de cotações automáticos", "Solicitações e compras automáticas", "Mapeamento de desenvolvimento do setor", "Agentes para tarefas repetitivas"] },
+    { month: 5, area: "Obras", icon: HardHat, items: ["Automação de cronogramas", "Pedidos automáticos conforme avanço de obra", "Agentes para tarefas repetitivas"] },
+    { month: 6, area: "Cobrança", icon: BellRing, items: ["Relatórios", "Controle de notificações", "Automação de notificações", "Automação de distratos", "Agentes para tarefas repetitivas"] },
+    { month: 7, area: "Orçamento", icon: FileSpreadsheet, items: ["Elaboração prévia automática conforme projetos", "Apropriação automática", "Relatórios de conferência e desvios"] },
+  ];
+
   return (
     <div className="space-y-8">
       <Hero icon={Users} eyebrow="Produto · Smart Squad" title="Evolução contínua & Operação de Inteligência" subtitle="Time dedicado de IA aplicada, operando junto à organização todos os dias." />
@@ -396,6 +464,57 @@ export function SmartSquadPrototype() {
       </div>
 
       <IllustrativeNote />
+
+      {/* Squad stages — how it works */}
+      <Card className="p-6 md:p-8 bg-card border-border">
+        <h3 className="text-lg font-bold mb-2 flex items-center gap-2"><CalIcon className="w-4 h-4 text-primary" />Como funcionam as etapas do Squad</h3>
+        <p className="text-sm text-muted-foreground mb-6 leading-relaxed">
+          O Smart Squad avança <span className="text-foreground font-semibold">uma área operacional por mês</span>. Em cada frente, o squad mapeia o
+          setor, implanta agentes e automações para o que é repetitivo, e entrega o que for específico daquela área — sem parar a operação nem
+          esperar a etapa anterior "fechar" para começar a próxima leitura.
+        </p>
+        <div className="grid sm:grid-cols-3 gap-3 mb-8">
+          {[
+            { n: "01", t: "Mapeamento do setor", d: "Diagnóstico rápido dos processos, gargalos e oportunidades de automação da área do mês." },
+            { n: "02", t: "Agentes e automações", d: "Implantação de agentes de IA e automações para o volume repetitivo identificado." },
+            { n: "03", t: "Entrega e transição", d: "Entrega dos ganhos da área e transição para a próxima frente do roadmap." },
+          ].map((s) => (
+            <div key={s.n} className="p-4 rounded-xl bg-background/50 border border-border">
+              <p className="text-xs text-primary font-mono mb-1">{s.n}</p>
+              <p className="font-bold text-sm mb-1">{s.t}</p>
+              <p className="text-xs text-muted-foreground leading-relaxed">{s.d}</p>
+            </div>
+          ))}
+        </div>
+
+        <h4 className="font-bold text-sm uppercase tracking-wider mb-3">Roadmap — 1 área por mês</h4>
+        <div className="space-y-3">
+          {squadStages.map((s, i) => (
+            <div key={s.month} className="flex flex-col sm:flex-row sm:items-start gap-4 p-4 rounded-2xl bg-background/50 border border-border">
+              <div className="flex items-center gap-3 sm:w-44 shrink-0">
+                <div className="w-10 h-10 rounded-xl bg-primary/10 border border-primary/30 flex items-center justify-center shrink-0">
+                  <s.icon className="w-5 h-5 text-primary" />
+                </div>
+                <div>
+                  <p className="text-[10px] text-muted-foreground font-mono uppercase tracking-widest">Mês {s.month}</p>
+                  <p className="font-bold text-sm">{s.area}</p>
+                </div>
+              </div>
+              <ul className="flex-1 grid sm:grid-cols-2 gap-x-4 gap-y-1.5">
+                {s.items.map((it) => (
+                  <li key={it} className="text-xs text-muted-foreground flex gap-2">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-primary shrink-0 mt-0.5" />{it}
+                  </li>
+                ))}
+              </ul>
+              {i < squadStages.length - 1 && (
+                <ArrowRight className="w-4 h-4 text-muted-foreground/40 shrink-0 hidden sm:block self-center" />
+              )}
+            </div>
+          ))}
+        </div>
+        <IllustrativeNote />
+      </Card>
 
       <div className="grid md:grid-cols-2 gap-6">
         <Card className="p-6 bg-card border-border">
@@ -446,16 +565,16 @@ export function SmartSquadPrototype() {
       {/* Velocity */}
       <Card className="p-6 bg-card border-border">
         <h3 className="text-lg font-bold mb-4 flex items-center gap-2"><LineChart className="w-4 h-4 text-primary" />Velocidade do squad — últimas sprints</h3>
-        <div className="flex items-end gap-3 h-28">
-          {velocity.map((v, i) => {
+        <div className="flex items-end gap-3 h-32">
+          {velocity.map((v) => {
             const maxTickets = Math.max(...velocity.map(x => x.tickets));
-            const height = (v.tickets / maxTickets) * 100;
+            const barHeight = Math.round((v.tickets / maxTickets) * 80);
             return (
-              <div key={v.sprint} className="flex-1 flex flex-col items-center gap-2">
+              <div key={v.sprint} className="flex-1 flex flex-col items-center justify-end gap-2 h-full">
                 <span className="text-xs font-bold text-primary">{v.tickets}</span>
                 <div
                   className="w-full rounded-t-md bg-gradient-gold transition-all"
-                  style={{ height: `${height}%` }}
+                  style={{ height: `${barHeight}px`, minHeight: "4px" }}
                 />
                 <span className="text-[10px] text-muted-foreground text-center">{v.sprint.replace("Sprint ", "S")}</span>
               </div>

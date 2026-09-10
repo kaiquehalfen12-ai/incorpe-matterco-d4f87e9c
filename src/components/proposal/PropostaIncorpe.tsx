@@ -208,6 +208,46 @@ function SquadStagesTimeline() {
   );
 }
 
+type TimelineTrack = { name: string; months: number; note?: string };
+
+function ProjectTimeline({ tracks, totalMonths }: { tracks: TimelineTrack[]; totalMonths: number }) {
+  return (
+    <Card className="p-6 md:p-8 bg-card border-border">
+      <div className="flex items-center gap-3 mb-2">
+        <div className="w-10 h-10 rounded-xl bg-primary/10 border border-primary/30 flex items-center justify-center shrink-0">
+          <CalendarClock className="w-5 h-5 text-primary" />
+        </div>
+        <div>
+          <h3 className="text-xl font-bold">Cronograma do projeto</h3>
+          <p className="text-xs text-muted-foreground">Todas as frentes começam simultaneamente, no mesmo período — Mês 1.</p>
+        </div>
+      </div>
+      <div className="space-y-4 mt-6">
+        {tracks.map((t) => (
+          <div key={t.name} className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
+            <div className="sm:w-48 shrink-0">
+              <p className="text-sm font-semibold">{t.name}</p>
+              {t.note && <p className="text-[11px] text-muted-foreground">{t.note}</p>}
+            </div>
+            <div className="flex-1 h-3.5 rounded-full bg-background/60 border border-border relative overflow-hidden">
+              <div
+                className="absolute inset-y-0 left-0 rounded-full bg-gradient-gold"
+                style={{ width: `${Math.max((t.months / totalMonths) * 100, 6)}%` }}
+              />
+            </div>
+            <span className="sm:w-24 shrink-0 sm:text-right text-xs text-muted-foreground font-mono">
+              {t.months} {t.months === 1 ? "mês" : "meses"}
+            </span>
+          </div>
+        ))}
+      </div>
+      <div className="mt-6 pt-4 border-t border-border flex items-center gap-2 text-xs text-muted-foreground">
+        <span className="w-2 h-2 rounded-full bg-primary shrink-0" /> Início simultâneo de todas as frentes — Mês 1
+      </div>
+    </Card>
+  );
+}
+
 const PARTICIPANTS = 15;
 
 const academy = [
@@ -339,6 +379,13 @@ export function PropostaIncorpe() {
           <ModuleCard m={aiScanModule("01")} />
           <ModuleCard m={smartSquadModule("02")} />
           <SquadStagesTimeline />
+          <ProjectTimeline
+            totalMonths={7}
+            tracks={[
+              { name: "AI Scan", months: 1, note: "4 semanas" },
+              { name: "Smart Squad", months: 7, note: "1 área por mês, contínuo" },
+            ]}
+          />
         </div>
       )}
 
@@ -361,11 +408,31 @@ export function PropostaIncorpe() {
               <ModuleCard m={smartCodeModule()} />
               <ModuleCard m={smartSquadModule("05")} />
               <SquadStagesTimeline />
+              <ProjectTimeline
+                totalMonths={12}
+                tracks={[
+                  { name: "Matter Learn · AI Shift", months: 1, note: "8 horas de imersão" },
+                  { name: "AI Scan", months: 1, note: "4 semanas" },
+                  { name: "Smart Route", months: 4, note: "Fundação estratégica" },
+                  { name: "Smart Code", months: 4, note: "Tecnologia e automação" },
+                  { name: "Smart Squad", months: 7, note: "1 área por mês, contínuo" },
+                  { name: "Matter Learn · AI Next", months: 12, note: "Formação contínua por faixas" },
+                ]}
+              />
             </div>
           )}
 
           {subOption === "B2" && (
-            <MatterLearnCard />
+            <div className="space-y-6">
+              <MatterLearnCard />
+              <ProjectTimeline
+                totalMonths={12}
+                tracks={[
+                  { name: "Matter Learn · AI Shift", months: 1, note: "8 horas de imersão" },
+                  { name: "Matter Learn · AI Next", months: 12, note: "Formação contínua por faixas" },
+                ]}
+              />
+            </div>
           )}
         </div>
       )}
