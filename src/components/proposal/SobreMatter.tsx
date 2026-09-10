@@ -1,4 +1,6 @@
 import matterLogo from "@/assets/matter-logo.png";
+import matterLogoLight from "@/assets/matter-logo-light.webp.asset.json";
+
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Brain, Layers, Users, Sparkles, Workflow, ArrowUpRight } from "lucide-react";
