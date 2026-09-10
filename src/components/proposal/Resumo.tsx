@@ -11,7 +11,7 @@ const incorpeItems: Item[] = [
   { name: "Smart Squad",               price: "BRL 9.880 /mês",         note: "Evolução contínua",   optional: true },
   { name: "Smart Pulse",               price: "BRL 3.000 /mês",         note: "Manutenção",          optional: true },
   { name: "Matter Academy · AI Shift", price: "BRL 980 /pessoa",        note: "20 part. = BRL 19.600" },
-  { name: "Matter Academy · AI Next",  price: "BRL 250 /pessoa/mês",    note: "20 part. = BRL 5.000/mês" },
+  { name: "Matter Academy · AI Next",  price: "BRL 250 /pessoa-mês",    note: "20 part. = BRL 5.000/mês" },
 ];
 
 export function Resumo() {
