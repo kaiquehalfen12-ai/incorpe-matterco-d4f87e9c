@@ -38,7 +38,7 @@ function aiScanModule(number: string): Module {
 
 function smartRouteModule(): Module {
   return {
-    number: "02",
+    number: "03",
     name: "Smart Route",
     subtitle: "Plano Estratégico de Escala e Eficiência",
     icon: Compass,
@@ -76,7 +76,7 @@ function smartRouteModule(): Module {
 
 function smartCodeModule(): Module {
   return {
-    number: "03",
+    number: "04",
     name: "Smart Code",
     subtitle: "Núcleo de Tecnologia, IA e Automação",
     icon: Cpu,
@@ -355,12 +355,12 @@ export function PropostaIncorpe() {
 
           {subOption === "B1" && (
             <div className="space-y-6">
-              <ModuleCard m={aiScanModule("01")} />
+              <MatterLearnCard moduleNumber="01" />
+              <ModuleCard m={aiScanModule("02")} />
               <ModuleCard m={smartRouteModule()} />
               <ModuleCard m={smartCodeModule()} />
-              <ModuleCard m={smartSquadModule("04")} />
+              <ModuleCard m={smartSquadModule("05")} />
               <SquadStagesTimeline />
-              <MatterLearnCard moduleNumber="05" />
             </div>
           )}
 
