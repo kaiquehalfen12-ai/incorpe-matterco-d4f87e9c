@@ -5,7 +5,7 @@ import { DollarSign, Clock, Layers, Sparkles } from "lucide-react";
 type Item = { name: string; price: string; note?: string; optional?: boolean };
 
 const incorpeItems: Item[] = [
-  { name: "AI Scan",                   price: "BRL 19.880",             note: "Diagnóstico inicial · 100% desconto com Smart Route ou Smart Code" },
+  { name: "AI Scan",                   price: "BRL 19.880",             note: "Diagnóstico inicial" },
   { name: "Smart Route",               price: "1+4 de BRL 28.880",     note: "Fundação estratégica" },
   { name: "Smart Code",                price: "BRL 30.000",             note: "Tecnologia, IA & Automação" },
   { name: "Smart Squad",               price: "BRL 9.880 /mês",         note: "1 área por mês — Engenharia, Financeiro, Contabilidade, Compras, Obras, Cobrança, Orçamento" },
@@ -39,9 +39,9 @@ const optionTotals: OptionTotal[] = [
   {
     label: "Opção B-1 · Escopo completo",
     title: "Matter Learn + AI Scan + Smart Route + Smart Code + Smart Squad",
-    setupTotal: "BRL 73.580",
+    setupTotal: "BRL 93.460",
     setupItems: [
-      "AI Scan — BRL 0 (100% desconto com Route + Code)",
+      "AI Scan — BRL 19.880",
       "Smart Route — BRL 28.880 (1 entrada + 4 parcelas)",
       "Smart Code — BRL 30.000",
       "Matter Learn · AI Shift — BRL 14.700 (15 pessoas)",

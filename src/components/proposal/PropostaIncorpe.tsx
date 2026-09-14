@@ -31,7 +31,6 @@ function aiScanModule(number: string): Module {
     ],
     duration: "4 semanas",
     investment: "BRL 19.880",
-    investmentNote: "100% de desconto ao contratar Smart Route ou Smart Code",
     badge: "Diagnóstico",
   };
 }

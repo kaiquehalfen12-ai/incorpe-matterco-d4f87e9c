@@ -724,7 +724,7 @@ export function MatterAcademyPrototype() {
           <h3 className="text-lg font-bold mb-4">Investimento — visão consolidada</h3>
           <div className="space-y-2">
             {[
-              { p: "AI Scan", v: "BRL 19.880", n: "4 semanas · 100% desconto com Smart Route ou Smart Code" },
+              { p: "AI Scan", v: "BRL 19.880", n: "4 semanas" },
               { p: "AI Shift", v: "BRL 980/pessoa", n: "15 part. = BRL 14.700" },
               { p: "AI Next", v: "BRL 250/pessoa/mês", n: "15 part. = BRL 3.750/mês" },
             ].map((i) => (
