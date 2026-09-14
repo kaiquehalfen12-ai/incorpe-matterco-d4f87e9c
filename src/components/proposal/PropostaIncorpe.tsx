@@ -257,7 +257,7 @@ const academy = [
     icon: Zap,
     time: "8 horas de imersão",
     price: "BRL 980 /pessoa",
-    priceNote: `${PARTICIPANTS} colaboradores · Total BRL 14.700 (de BRL 1.500)`,
+    priceNote: `${PARTICIPANTS} colaboradores · Total BRL 14.700`,
     desc: "Programa de formação acessível em IA aplicada ao trabalho e negócios, para profissionais e empresas em transição digital.",
     items: ["Imersão para mínimo 15 participantes", "Estratégia de transformação digital", "Framework de aplicações contextualizado", "Plano de aplicação da IA na organização"],
   },
