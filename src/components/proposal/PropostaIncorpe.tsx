@@ -31,6 +31,7 @@ function aiScanModule(number: string): Module {
     ],
     duration: "4 semanas",
     investment: "BRL 19.880",
+    investmentNote: "4 parcelas de BRL 4.970 (dez/26 a mar/27)",
     badge: "Diagnóstico",
   };
 }
@@ -66,8 +67,8 @@ function smartRouteModule(): Module {
       "Modelo de acompanhamento",
     ],
     duration: "4 meses",
-    investment: "1+4 de BRL 28.880",
-    investmentNote: "Entrada + 4 parcelas mensais",
+    investment: "BRL 130.000",
+    investmentNote: "Dez/26 BRL 50.000 · mar/27 BRL 30.000 · jun/27 BRL 25.000 · set/27 BRL 25.000",
     badge: "Fundação",
     highlight: true,
   };
@@ -255,8 +256,8 @@ const academy = [
     sub: "Imersão Executiva",
     icon: Zap,
     time: "8 horas de imersão",
-    price: "BRL 980 /pessoa",
-    priceNote: `${PARTICIPANTS} colaboradores · Total BRL 14.700`,
+    price: "BRL 800 /pessoa",
+    priceNote: `${PARTICIPANTS} colaboradores · Total BRL 12.000 (4x BRL 3.000)`,
     desc: "Programa de formação acessível em IA aplicada ao trabalho e negócios, para profissionais e empresas em transição digital.",
     items: ["Imersão para mínimo 15 participantes", "Estratégia de transformação digital", "Framework de aplicações contextualizado", "Plano de aplicação da IA na organização"],
   },
@@ -266,7 +267,7 @@ const academy = [
     icon: BookOpen,
     time: "12 meses · 3 meses por faixa",
     price: "BRL 250 /pessoa-mês",
-    priceNote: `${PARTICIPANTS} colaboradores · BRL 3.750 /mês`,
+    priceNote: `${PARTICIPANTS} colaboradores · BRL 3.750 /mês (dez/26 a nov/27)`,
     desc: "Jornada Faixa Branca → Verde → Marrom → Preta. Metodologia TD Matter para construção de cultura de IA.",
     items: ["Jornada por faixas (Branca → Preta)", "Treinamento contínuo (Metodologia TD Matter)", "Construção de cultura IA", "Formação prática em ferramentas de IA", "Certificação Matter Academy"],
   },

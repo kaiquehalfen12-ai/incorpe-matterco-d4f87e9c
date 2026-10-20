@@ -5,12 +5,12 @@ import { DollarSign, Clock, Layers, Sparkles } from "lucide-react";
 type Item = { name: string; price: string; note?: string; optional?: boolean };
 
 const incorpeItems: Item[] = [
-  { name: "AI Scan",                   price: "BRL 19.880",             note: "Diagnóstico inicial" },
-  { name: "Smart Route",               price: "1+4 de BRL 28.880",     note: "Fundação estratégica" },
+  { name: "AI Scan",                   price: "BRL 19.880",             note: "Diagnóstico inicial · 4x BRL 4.970" },
+  { name: "Smart Route",               price: "BRL 130.000",            note: "Fundação estratégica · 4 parcelas (dez/26, mar/27, jun/27, set/27)" },
   { name: "Smart Code",                price: "BRL 30.000",             note: "Tecnologia, IA & Automação" },
   { name: "Smart Squad",               price: "BRL 9.880 /mês",         note: "1 área por mês — Engenharia, Financeiro, Contabilidade, Compras, Obras, Cobrança, Orçamento" },
-  { name: "Matter Learn · AI Shift",   price: "BRL 980 /pessoa",        note: "15 part. = BRL 14.700" },
-  { name: "Matter Learn · AI Next",    price: "BRL 250 /pessoa-mês",    note: "15 part. = BRL 3.750/mês" },
+  { name: "Matter Learn · AI Shift",   price: "BRL 800 /pessoa",        note: "15 part. = BRL 12.000 (4x BRL 3.000)" },
+  { name: "Matter Learn · AI Next",    price: "BRL 250 /pessoa-mês",    note: "15 part. = BRL 3.750/mês por 12 meses" },
   { name: "Smart Pulse",               price: "BRL 3.000 /mês",         note: "Manutenção adicional do Smart Squad", optional: true },
 ];
 
@@ -39,12 +39,12 @@ const optionTotals: OptionTotal[] = [
   {
     label: "Opção B-1 · Escopo completo",
     title: "Matter Learn + AI Scan + Smart Route + Smart Code + Smart Squad",
-    setupTotal: "BRL 93.460",
+    setupTotal: "BRL 191.880",
     setupItems: [
-      "AI Scan — BRL 19.880",
-      "Smart Route — BRL 28.880 (1 entrada + 4 parcelas)",
+      "AI Scan — BRL 19.880 (4x BRL 4.970)",
+      "Smart Route — BRL 130.000 (4 parcelas)",
       "Smart Code — BRL 30.000",
-      "Matter Learn · AI Shift — BRL 14.700 (15 pessoas)",
+      "Matter Learn · AI Shift — BRL 12.000 (15 pessoas)",
     ],
     recurringTotal: "BRL 13.630 /mês",
     recurringItems: [
@@ -57,13 +57,138 @@ const optionTotals: OptionTotal[] = [
   {
     label: "Opção B-2 · Matter Learn",
     title: "Matter Learn (AI Shift + AI Next)",
-    setupTotal: "BRL 14.700",
-    setupItems: ["Matter Learn · AI Shift — BRL 14.700 (15 pessoas, 1 dia de imersão)"],
+    setupTotal: "BRL 12.000",
+    setupItems: ["Matter Learn · AI Shift — BRL 12.000 (15 pessoas, 1 dia de imersão)"],
     recurringTotal: "BRL 3.750 /mês",
     recurringItems: ["Matter Learn · AI Next — BRL 3.750/mês (12 meses, 15 pessoas)"],
     footnote: "AI Shift e AI Next começam simultaneamente no Mês 1. O AI Next segue ativo por 12 meses.",
   },
 ];
+
+const consolidatedItems = [
+  { name: "AI Scan",     calc: "4 parcelas de BRL 4.970",                                         total: "BRL 19.880" },
+  { name: "AI Shift",    calc: "15 participantes x BRL 800 = BRL 12.000, em 4x BRL 3.000",        total: "BRL 12.000" },
+  { name: "AI Next",     calc: "12 mensalidades de BRL 3.750",                                    total: "BRL 45.000" },
+  { name: "Smart Route", calc: "Dez/26 BRL 50.000, mar/27 BRL 30.000, jun/27 e set/27 BRL 25.000", total: "BRL 130.000" },
+];
+
+const consolidatedPremises = [
+  "AI Scan: preservado o valor original de BRL 19.880.",
+  "AI Shift: preço por participante reduzido de BRL 980 para BRL 800 (BRL 2.700 a menos no grupo de 15).",
+  "Smart Route: proposta original de BRL 144.400 ajustada para BRL 130.000 (redução de BRL 14.400, aproximadamente 9,97%).",
+  "AI Next: mensalidade de BRL 3.750 por 12 meses, de dez/26 a nov/27.",
+  "Smart Squad e Smart Code não integram este total; eventual contratação dependerá de avaliação posterior ao AI Scan.",
+];
+
+// [mês, AI Scan, AI Shift, AI Next, Smart Route] em BRL
+const disbursements: [string, number, number, number, number][] = [
+  ["Dez/26", 4970, 3000, 3750, 50000],
+  ["Jan/27", 4970, 3000, 3750, 0],
+  ["Fev/27", 4970, 3000, 3750, 0],
+  ["Mar/27", 4970, 3000, 3750, 30000],
+  ["Abr/27", 0, 0, 3750, 0],
+  ["Mai/27", 0, 0, 3750, 0],
+  ["Jun/27", 0, 0, 3750, 25000],
+  ["Jul/27", 0, 0, 3750, 0],
+  ["Ago/27", 0, 0, 3750, 0],
+  ["Set/27", 0, 0, 3750, 25000],
+  ["Out/27", 0, 0, 3750, 0],
+  ["Nov/27", 0, 0, 3750, 0],
+];
+
+const fmt = (v: number) => (v === 0 ? "–" : v.toLocaleString("pt-BR"));
+
+function ConsolidatedProposal() {
+  const columnTotals = [1, 2, 3, 4].map((c) => disbursements.reduce((s, r) => s + (r[c] as number), 0));
+  const grandTotal = columnTotals.reduce((s, v) => s + v, 0);
+
+  return (
+    <div className="space-y-6">
+      <div className="flex items-center gap-2">
+        <DollarSign className="w-4 h-4 text-primary" />
+        <h3 className="font-bold uppercase tracking-wider text-xs">Proposta consolidada · racional financeiro</h3>
+      </div>
+
+      <Card className="p-7 md:p-10 bg-card border-border">
+        <p className="text-xs text-primary font-mono uppercase tracking-widest mb-1">Composição do investimento</p>
+        <h4 className="text-lg font-bold mb-1">AI Scan + AI Shift + AI Next + Smart Route</h4>
+        <p className="text-xs text-muted-foreground mb-6">Formalização prevista: novembro de 2026. Pagamentos de dezembro de 2026 a novembro de 2027.</p>
+        <ul className="space-y-2">
+          {consolidatedItems.map((i) => (
+            <li key={i.name} className="flex items-center justify-between gap-4 p-4 rounded-xl bg-background/50 border border-border">
+              <div>
+                <p className="font-semibold text-sm">{i.name}</p>
+                <p className="text-xs text-muted-foreground mt-0.5">{i.calc}</p>
+              </div>
+              <p className="font-bold text-primary text-sm text-right shrink-0">{i.total}</p>
+            </li>
+          ))}
+        </ul>
+        <div className="mt-4 p-6 rounded-2xl bg-gradient-gold text-primary-foreground flex flex-wrap items-center justify-between gap-2">
+          <p className="text-xs uppercase tracking-wider opacity-80">Investimento total</p>
+          <p className="text-3xl md:text-4xl font-bold">BRL {grandTotal.toLocaleString("pt-BR")}</p>
+        </div>
+      </Card>
+
+      <Card className="p-7 md:p-10 bg-card border-border">
+        <p className="text-xs text-primary font-mono uppercase tracking-widest mb-4">Concessões e premissas comerciais</p>
+        <ul className="space-y-2">
+          {consolidatedPremises.map((p) => (
+            <li key={p} className="flex gap-3 text-sm text-muted-foreground">
+              <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
+              <span>{p}</span>
+            </li>
+          ))}
+        </ul>
+      </Card>
+
+      <Card className="p-7 md:p-10 bg-card border-border">
+        <p className="text-xs text-primary font-mono uppercase tracking-widest mb-4">Cronograma mensal de desembolsos (BRL)</p>
+        <div className="overflow-x-auto -mx-2">
+          <table className="w-full min-w-[520px] text-sm">
+            <thead>
+              <tr className="text-xs uppercase tracking-wider text-muted-foreground border-b border-border">
+                <th className="text-left font-semibold py-3 px-2">Mês</th>
+                <th className="text-right font-semibold py-3 px-2">AI Scan</th>
+                <th className="text-right font-semibold py-3 px-2">AI Shift</th>
+                <th className="text-right font-semibold py-3 px-2">AI Next</th>
+                <th className="text-right font-semibold py-3 px-2">Smart Route</th>
+                <th className="text-right font-semibold py-3 px-2">Total</th>
+              </tr>
+            </thead>
+            <tbody className="font-mono tabular-nums">
+              {disbursements.map(([month, ...values]) => {
+                const total = values.reduce((s, v) => s + v, 0);
+                return (
+                  <tr key={month} className="border-b border-border/60">
+                    <td className="py-2.5 px-2 font-sans font-semibold">{month}</td>
+                    {values.map((v, idx) => (
+                      <td key={idx} className="py-2.5 px-2 text-right text-muted-foreground">{fmt(v)}</td>
+                    ))}
+                    <td className="py-2.5 px-2 text-right font-bold text-primary">{fmt(total)}</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+            <tfoot className="font-mono tabular-nums">
+              <tr>
+                <td className="pt-4 px-2 font-sans font-bold">Total</td>
+                {columnTotals.map((v, idx) => (
+                  <td key={idx} className="pt-4 px-2 text-right font-bold">{fmt(v)}</td>
+                ))}
+                <td className="pt-4 px-2 text-right font-bold text-primary">{fmt(grandTotal)}</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+        <p className="text-xs text-muted-foreground mt-6">
+          Primeiro desembolso de BRL 61.720 em dez/26, parcelas extraordinárias do Smart Route em mar/27, jun/27 e set/27,
+          e encerramento dos pagamentos em nov/27. Escopos, datas de execução, entregáveis e demais condições constarão dos instrumentos contratuais.
+        </p>
+      </Card>
+    </div>
+  );
+}
 
 export function Resumo() {
   const mandatory = incorpeItems.filter(i => !i.optional);
@@ -112,7 +237,7 @@ export function Resumo() {
           <div>
             <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1">Investimento de entrada</p>
             <p className="text-2xl font-bold text-gradient-gold">BRL 19.880</p>
-            <p className="text-xs text-muted-foreground mt-1">AI Scan</p>
+            <p className="text-xs text-muted-foreground mt-1">AI Scan · 4x BRL 4.970</p>
           </div>
         </Card>
       </div>
@@ -193,6 +318,8 @@ export function Resumo() {
           </Card>
         ))}
       </div>
+
+      <ConsolidatedProposal />
 
       {/* Bottom highlight card */}
       <Card className="p-8 md:p-12 bg-gradient-gold text-primary-foreground border-0 shadow-gold">
