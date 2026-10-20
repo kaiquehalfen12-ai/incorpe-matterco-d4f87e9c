@@ -1,172 +1,167 @@
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { DollarSign, Clock, Layers, Sparkles } from "lucide-react";
+import { DollarSign, CalendarDays, Handshake, FileText } from "lucide-react";
 
-type Item = { name: string; price: string; note?: string; optional?: boolean };
+type Composicao = { solucao: string; memoria: string; valor: string; total?: boolean };
 
-const incorpeItems: Item[] = [
-  { name: "AI Scan",                   price: "BRL 19.880",             note: "Diagnóstico inicial · 100% desconto com Smart Route ou Smart Code" },
-  { name: "Smart Route",               price: "1+4 de BRL 28.880",     note: "Fundação estratégica" },
-  { name: "Smart Code",                price: "BRL 30.000",             note: "Tecnologia, IA & Automação" },
-  { name: "Smart Squad",               price: "BRL 9.880 /mês",         note: "1 área por mês — Engenharia, Financeiro, Contabilidade, Compras, Obras, Cobrança, Orçamento" },
-  { name: "Matter Learn · AI Shift",   price: "BRL 980 /pessoa",        note: "15 part. = BRL 14.700" },
-  { name: "Matter Learn · AI Next",    price: "BRL 250 /pessoa-mês",    note: "15 part. = BRL 3.750/mês" },
-  { name: "Smart Pulse",               price: "BRL 3.000 /mês",         note: "Manutenção adicional do Smart Squad", optional: true },
+const composicao: Composicao[] = [
+  { solucao: "AI Scan",    memoria: "4 parcelas de R$ 4.970,00",                                              valor: "R$ 19.880,00"  },
+  { solucao: "AI Shift",   memoria: "15 participantes × R$ 800,00 = R$ 12.000,00; 4 × R$ 3.000,00",           valor: "R$ 12.000,00"  },
+  { solucao: "AI Next",    memoria: "12 mensalidades × R$ 3.750,00",                                          valor: "R$ 45.000,00"  },
+  { solucao: "Smart Route", memoria: "Dez/26: R$ 50.000 · mar/27: R$ 30.000 · jun/27: R$ 25.000 · set/27: R$ 25.000", valor: "R$ 130.000,00" },
+  { solucao: "TOTAL",      memoria: "19.880 + 12.000 + 45.000 + 130.000",                                     valor: "R$ 206.880,00", total: true },
+];
+
+const concessoes: string[] = [
+  "AI Scan: preservado o valor original de R$ 19.880,00, sem o desconto solicitado.",
+  "AI Shift: preço por participante reduzido de R$ 980,00 para R$ 800,00 (redução de R$ 180,00 por pessoa; R$ 2.700,00 no grupo de 15).",
+  "Smart Route: proposta original de R$ 144.400,00 ajustada para R$ 130.000,00 (redução de R$ 14.400,00, aproximadamente 9,97%). Valor R$ 5.000,00 acima da contraproposta de R$ 125.000,00.",
+  "AI Next: mensalidade de R$ 3.750,00 por 12 meses, de dez/26 a nov/27.",
+  "Smart Squad e Smart Code: não integram este total; eventual contratação dependerá de avaliação posterior ao AI Scan.",
+];
+
+type Mes = { mes: string; scan: string; shift: string; next: string; route: string; total: string; bold?: boolean };
+
+const cronograma: Mes[] = [
+  { mes: "Dez/26", scan: "4.970",  shift: "3.000", next: "3.750", route: "50.000", total: "61.720" },
+  { mes: "Jan/27", scan: "4.970",  shift: "3.000", next: "3.750", route: "—",      total: "11.720" },
+  { mes: "Fev/27", scan: "4.970",  shift: "3.000", next: "3.750", route: "—",      total: "11.720" },
+  { mes: "Mar/27", scan: "4.970",  shift: "3.000", next: "3.750", route: "30.000", total: "41.720" },
+  { mes: "Abr/27", scan: "—",      shift: "—",     next: "3.750", route: "—",      total: "3.750"  },
+  { mes: "Mai/27", scan: "—",      shift: "—",     next: "3.750", route: "—",      total: "3.750"  },
+  { mes: "Jun/27", scan: "—",      shift: "—",     next: "3.750", route: "25.000", total: "28.750" },
+  { mes: "Jul/27", scan: "—",      shift: "—",     next: "3.750", route: "—",      total: "3.750"  },
+  { mes: "Ago/27", scan: "—",      shift: "—",     next: "3.750", route: "—",      total: "3.750"  },
+  { mes: "Set/27", scan: "—",      shift: "—",     next: "3.750", route: "25.000", total: "28.750" },
+  { mes: "Out/27", scan: "—",      shift: "—",     next: "3.750", route: "—",      total: "3.750"  },
+  { mes: "Nov/27", scan: "—",      shift: "—",     next: "3.750", route: "—",      total: "3.750"  },
+  { mes: "Dez/27", scan: "—",      shift: "—",     next: "—",     route: "—",      total: "—"      },
+  { mes: "TOTAL",  scan: "19.880", shift: "12.000", next: "45.000", route: "130.000", total: "206.880", bold: true },
 ];
 
 export function Resumo() {
-  const mandatory = incorpeItems.filter(i => !i.optional);
-  const optional  = incorpeItems.filter(i => i.optional);
-
   return (
     <div className="space-y-10">
       {/* Hero */}
       <section className="rounded-3xl border border-border bg-card p-8 md:p-14 relative overflow-hidden">
-        <div className="absolute inset-0 grid-bg opacity-30" />
         <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full bg-primary/20 blur-3xl" />
         <div className="relative">
-          <div>
-            <Badge className="bg-primary text-primary-foreground mb-4">Resumo Estratégico</Badge>
-            <h1 className="flex flex-wrap items-baseline gap-x-3 text-4xl md:text-5xl font-bold leading-tight mb-4">
-              <span>Proposta</span>
-              <span className="text-gradient-gold">INCORPE</span>
-            </h1>
-            <p className="text-muted-foreground text-lg max-w-2xl">
-              Eficiência operacional, tecnologia, escala e inteligência empresarial — construída para a próxima década do grupo.
-            </p>
-          </div>
+          <Badge className="bg-primary text-primary-foreground mb-4">Resumo Estratégico</Badge>
+          <h1 className="flex flex-wrap items-baseline gap-x-3 text-4xl md:text-5xl font-bold leading-tight mb-4">
+            <span>Proposta</span>
+            <span className="text-gradient-gold">Incorpe</span>
+          </h1>
+          <p className="text-muted-foreground text-lg max-w-2xl">
+            Racional financeiro e desembolsos — formalização prevista para novembro de 2026, com pagamentos de dezembro de 2026 a novembro de 2027.
+          </p>
         </div>
       </section>
 
-      {/* Stats row */}
-      <div className="grid sm:grid-cols-3 gap-4">
-        <Card className="p-6 bg-card border-border flex items-start gap-3">
-          <Layers className="w-5 h-5 text-primary mt-0.5 shrink-0" />
+      {/* Total highlight */}
+      <Card className="p-7 md:p-10 bg-gradient-gold text-primary-foreground border-0 shadow-gold">
+        <div className="flex flex-wrap items-center justify-between gap-6">
           <div>
-            <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1">Módulos</p>
-            <p className="text-3xl font-bold text-gradient-gold">5</p>
-            <p className="text-xs text-muted-foreground mt-1">AI Scan · Smart Route · Code · Squad · Matter Learn</p>
-          </div>
-        </Card>
-        <Card className="p-6 bg-card border-border flex items-start gap-3">
-          <Clock className="w-5 h-5 text-primary mt-0.5 shrink-0" />
-          <div>
-            <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1">Duração</p>
-            <p className="text-3xl font-bold text-gradient-gold">10+</p>
-            <p className="text-xs text-muted-foreground mt-1">Meses de transformação</p>
-          </div>
-        </Card>
-        <Card className="p-6 bg-card border-border flex items-start gap-3">
-          <DollarSign className="w-5 h-5 text-primary mt-0.5 shrink-0" />
-          <div>
-            <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1">Investimento de entrada</p>
-            <p className="text-2xl font-bold text-gradient-gold">BRL 19.880</p>
-            <p className="text-xs text-muted-foreground mt-1">AI Scan</p>
-          </div>
-        </Card>
-      </div>
-
-      {/* Investment table */}
-      <div className="grid md:grid-cols-2 gap-6">
-        {/* Mandatory modules */}
-        <Card className="p-7 bg-card border-border">
-          <div className="flex items-center gap-2 mb-5">
-            <Sparkles className="w-4 h-4 text-primary" />
-            <h3 className="font-bold uppercase tracking-wider text-xs">Módulos principais</h3>
-          </div>
-          <ul className="space-y-2">
-            {mandatory.map((i) => (
-              <li key={i.name} className="flex items-center justify-between p-4 rounded-xl bg-background/50 border border-border hover:border-primary/40 transition-colors">
-                <div>
-                  <p className="font-semibold text-sm">{i.name}</p>
-                  {i.note && <p className="text-xs text-muted-foreground mt-0.5">{i.note}</p>}
-                </div>
-                <p className="font-bold text-primary text-sm ml-4 text-right">{i.price}</p>
-              </li>
-            ))}
-          </ul>
-        </Card>
-
-        {/* Optional modules */}
-        <Card className="p-7 bg-card border-border">
-          <div className="flex items-center gap-2 mb-5">
-            <DollarSign className="w-4 h-4 text-primary" />
-            <h3 className="font-bold uppercase tracking-wider text-xs">Módulos opcionais</h3>
-          </div>
-          <ul className="space-y-2">
-            {optional.map((i) => (
-              <li key={i.name} className="flex items-center justify-between p-4 rounded-xl bg-background/50 border border-primary/20 hover:border-primary/40 transition-colors">
-                <div>
-                  <p className="font-semibold text-sm">{i.name}</p>
-                  {i.note && <p className="text-xs text-muted-foreground mt-0.5">{i.note}</p>}
-                </div>
-                <p className="font-bold text-primary text-sm ml-4 text-right">{i.price}</p>
-              </li>
-            ))}
-          </ul>
-          <p className="text-xs text-muted-foreground mt-4 pt-4 border-t border-border">
-            Smart Pulse é um reforço opcional de manutenção contínua do Smart Squad.
-          </p>
-        </Card>
-      </div>
-
-      {/* Total investment */}
-      <Card className="p-7 md:p-10 bg-card border-border">
-        <div className="flex items-center gap-2 mb-6">
-          <DollarSign className="w-4 h-4 text-primary" />
-          <h3 className="font-bold uppercase tracking-wider text-xs">Valor total do projeto — Opção B-1 (escopo completo)</h3>
-        </div>
-        <div className="grid md:grid-cols-2 gap-6">
-          <div className="p-6 rounded-2xl bg-gradient-gold text-primary-foreground">
-            <p className="text-xs uppercase tracking-wider opacity-80 mb-1">Investimento único (setup)</p>
-            <p className="text-3xl md:text-4xl font-bold mb-3">BRL 73.580</p>
-            <ul className="space-y-1 text-sm opacity-90">
-              <li>AI Scan — BRL 0 (100% desconto com Route + Code)</li>
-              <li>Smart Route — BRL 28.880 (1 entrada + 4 parcelas)</li>
-              <li>Smart Code — BRL 30.000</li>
-              <li>Matter Learn · AI Shift — BRL 14.700 (15 pessoas)</li>
-            </ul>
-          </div>
-          <div className="p-6 rounded-2xl bg-background/50 border border-border">
-            <p className="text-xs uppercase tracking-wider text-muted-foreground mb-1">Investimento recorrente (mensal)</p>
-            <p className="text-3xl md:text-4xl font-bold text-gradient-gold mb-3">BRL 13.630 /mês</p>
-            <ul className="space-y-1 text-sm text-muted-foreground">
-              <li>Smart Squad — BRL 9.880/mês (contínuo, 1 área por mês)</li>
-              <li>Matter Learn · AI Next — BRL 3.750/mês (12 meses, 15 pessoas)</li>
-            </ul>
-            <p className="text-xs text-muted-foreground mt-3 pt-3 border-t border-border">+ Smart Pulse (opcional): BRL 3.000/mês</p>
-          </div>
-        </div>
-        <p className="text-xs text-muted-foreground mt-6">
-          AI Scan, Smart Route, Smart Code, Smart Squad e Matter Learn começam simultaneamente no Mês 1. O AI Next segue ativo por 12 meses; o Smart Squad continua enquanto o contrato estiver vigente.
-        </p>
-      </Card>
-
-      {/* Bottom highlight card */}
-      <Card className="p-8 md:p-12 bg-gradient-gold text-primary-foreground border-0 shadow-gold">
-        <div className="grid md:grid-cols-3 gap-8 items-center">
-          <div className="md:col-span-2">
-            <p className="text-sm font-mono uppercase tracking-widest opacity-70 mb-2">Por que Matter&Co.</p>
-            <h3 className="text-2xl md:text-4xl font-bold mb-4">
-              Uma solução integrada para a próxima escala da INCORPE
-            </h3>
-            <p className="opacity-80 leading-relaxed">
-              Estratégia, tecnologia e inteligência operando juntos — do diagnóstico ao produto digital proprietário,
-              com um squad dedicado sustentando a evolução contínua do negócio.
-            </p>
+            <p className="text-sm font-mono uppercase tracking-widest opacity-70 mb-2">Investimento total</p>
+            <p className="text-4xl md:text-5xl font-bold">R$ 206.880,00</p>
+            <p className="opacity-80 mt-2 text-sm">AI Scan · AI Shift · AI Next · Smart Route</p>
           </div>
           <div className="space-y-3">
             <div className="p-4 rounded-xl bg-primary-foreground/10 backdrop-blur">
-              <p className="text-xs uppercase tracking-wider opacity-70">Total de módulos</p>
-              <p className="text-3xl font-bold">5</p>
-            </div>
-            <div className="p-4 rounded-xl bg-primary-foreground/10 backdrop-blur">
-              <p className="text-xs uppercase tracking-wider opacity-70">Empresas do ecossistema</p>
-              <p className="text-3xl font-bold">3</p>
-              <p className="text-xs opacity-70 mt-1">Smart · BASE/labs · Matter Academy</p>
+              <p className="text-xs uppercase tracking-wider opacity-70">Primeiro desembolso</p>
+              <p className="text-2xl font-bold">R$ 61.720</p>
+              <p className="text-xs opacity-70 mt-1">Dezembro/2026</p>
             </div>
           </div>
         </div>
+      </Card>
+
+      {/* Composição do investimento */}
+      <Card className="p-7 bg-card border-border">
+        <div className="flex items-center gap-2 mb-5">
+          <DollarSign className="w-4 h-4 text-primary" />
+          <h3 className="font-bold uppercase tracking-wider text-xs">Composição do investimento</h3>
+        </div>
+        <div className="overflow-x-auto">
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="text-left text-xs uppercase tracking-wider text-muted-foreground border-b border-border">
+                <th className="py-3 pr-4 font-semibold">Solução</th>
+                <th className="py-3 pr-4 font-semibold">Memória de cálculo</th>
+                <th className="py-3 font-semibold text-right">Investimento</th>
+              </tr>
+            </thead>
+            <tbody>
+              {composicao.map((c) => (
+                <tr key={c.solucao} className={c.total ? "border-t-2 border-primary/40 font-bold" : "border-b border-border/60"}>
+                  <td className={`py-3.5 pr-4 ${c.total ? "text-gradient-gold" : "font-semibold"}`}>{c.solucao}</td>
+                  <td className="py-3.5 pr-4 text-muted-foreground">{c.memoria}</td>
+                  <td className={`py-3.5 text-right ${c.total ? "text-gradient-gold text-base" : "text-primary font-bold"}`}>{c.valor}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </Card>
+
+      {/* Concessões e premissas */}
+      <Card className="p-7 bg-card border-border">
+        <div className="flex items-center gap-2 mb-5">
+          <Handshake className="w-4 h-4 text-primary" />
+          <h3 className="font-bold uppercase tracking-wider text-xs">Concessões e premissas comerciais</h3>
+        </div>
+        <ul className="space-y-3">
+          {concessoes.map((c) => (
+            <li key={c} className="flex gap-3 text-sm text-muted-foreground">
+              <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
+              <span>{c}</span>
+            </li>
+          ))}
+        </ul>
+      </Card>
+
+      {/* Cronograma de desembolsos */}
+      <Card className="p-7 bg-card border-border">
+        <div className="flex items-center gap-2 mb-5">
+          <CalendarDays className="w-4 h-4 text-primary" />
+          <h3 className="font-bold uppercase tracking-wider text-xs">Cronograma mensal de desembolsos</h3>
+        </div>
+        <div className="overflow-x-auto">
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="text-left text-xs uppercase tracking-wider text-muted-foreground border-b border-border">
+                <th className="py-3 pr-4 font-semibold">Mês</th>
+                <th className="py-3 pr-4 font-semibold text-right">AI Scan</th>
+                <th className="py-3 pr-4 font-semibold text-right">AI Shift</th>
+                <th className="py-3 pr-4 font-semibold text-right">AI Next</th>
+                <th className="py-3 pr-4 font-semibold text-right">Smart Route</th>
+                <th className="py-3 font-semibold text-right">Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              {cronograma.map((m) => (
+                <tr key={m.mes} className={m.bold ? "border-t-2 border-primary/40 font-bold" : "border-b border-border/60"}>
+                  <td className={`py-3 pr-4 ${m.bold ? "text-gradient-gold" : "font-semibold"}`}>{m.mes}</td>
+                  <td className="py-3 pr-4 text-right text-muted-foreground">{m.scan}</td>
+                  <td className="py-3 pr-4 text-right text-muted-foreground">{m.shift}</td>
+                  <td className="py-3 pr-4 text-right text-muted-foreground">{m.next}</td>
+                  <td className="py-3 pr-4 text-right text-muted-foreground">{m.route}</td>
+                  <td className={`py-3 text-right ${m.bold ? "text-gradient-gold" : "text-primary font-bold"}`}>{m.total}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p className="text-xs text-muted-foreground mt-5 pt-4 border-t border-border">
+          Leitura do fluxo: primeiro desembolso de R$ 61.720,00 em dez/26; parcelas extraordinárias do Smart Route em mar/27, jun/27 e set/27; encerramento dos pagamentos em nov/27. Dez/27 não possui desembolso previsto.
+        </p>
+      </Card>
+
+      {/* Nota */}
+      <Card className="p-6 bg-card border-border flex gap-3">
+        <FileText className="w-4 h-4 text-primary shrink-0 mt-0.5" />
+        <p className="text-xs text-muted-foreground leading-relaxed">
+          Este resumo consolida as condições financeiras propostas para negociação. Escopos, datas de execução, entregáveis e demais condições constarão dos instrumentos contratuais.
+        </p>
       </Card>
     </div>
   );
